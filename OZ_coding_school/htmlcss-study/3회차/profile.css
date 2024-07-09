@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Dongle";
+  text-align: center;
+}
+html {
+  font-size: 28px;
+  background-color: #E0E0E0;
+}
+body {
+  width: 640px;
+  margin: 0 auto; /* 너비에서 남는 여백을 동일하게 분배 */
+}
+h1 {
+  font-size: 48px;
+}
+img {
+  width: 200px;
+  height: 300px;
+  border-radius: 20px 40px 20px 40px;
+}
+ul {
+  list-style: none;
+}

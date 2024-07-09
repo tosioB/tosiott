@@ -1,0 +1,62 @@
+:root {
+  --main-color: rgb(0, 37, 108);
+  --sub-color: #EEF8FD
+}
+
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 62.5%;
+  letter-spacing: -0.06rem;
+  color: #000;
+}
+html, body {
+  height: 100%;
+}
+ul, ol {
+  list-style: none;
+}
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+input[type="checkbox"]+label,
+input[type="radio"]+label {
+  cursor: pointer;
+}
+
+/* common */
+.d-flex {
+  display: flex !important;
+}
+.align-c {
+  align-items: center !important;
+}
+.container {
+  width: 100%;
+  max-width: 144rem;
+  margin: 0 auto;
+}
+.inner {
+  width: 100%;
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+/* tab */
+.tab-wrap .tab-con {
+  display: none;
+}
+.tab-wrap .tab-con.active {
+  display: block;
+}

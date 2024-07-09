@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo-List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #000;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: rgba(0,0,0,0.2);
+    }
+    ul, ol {
+      list-style: none;
+    }
+    body {
+      font-family: "Gaegu", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      background-color: #fff;
+    }
+    .todo-list {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 600px;
+      border: 2px solid #00897B;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .todo-header {
+      height: 48px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 46px;
+      background-color: #00897B;
+      color: #FFF;
+    }
+    .todo-container {
+      background-color: #FFF;
+    }
+    .inp-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 16px;
+      border-bottom: 1px solid #e1e1e1;
+    }
+    .inp-box .inp {
+      display: block;
+      width: 100%;
+      height: 32px;
+      padding: 0 8px;
+      border: 1px solid #e1e1e1;
+      border-radius: 4px;
+    }
+    .inp-box input:focus {
+      outline: 1px solid #00897B;
+      background-color: #E0F2F1;
+    }
+    .inp-box .add-btn {
+      height: 32px;
+      padding: 0 8px;
+      white-space: nowrap;
+      background-color: #00897B;
+      border: none;
+      border-radius: 4px;
+      color: #FFF;
+      cursor: pointer;
+    }
+    .inp-box .add-btn:active {
+      background-color: #4DB6AC;
+    }
+    .todo-list-box {
+      max-height: 250px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .todo-list-box li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 50px;
+      padding: 8px 20px;
+      border-bottom: 1px solid #e1e1e1;
+    }
+    .todo-list-box li.remove {
+      position: relative;
+      margin-left: 100vh;
+      opacity: 0;
+      transition: all 0.6s;
+    }
+    .todo-list-box li:last-child {
+      border-top: none;
+    }
+    .todo-list-box li:hover {
+      background-color: rgba(50, 168, 82, 0.2);
+    }
+    .todo-list-box li .del-btn {
+      width: 62px;
+      min-width: 62px;
+      height: 32px;
+      white-space: nowrap;
+      background-color: #E53935;
+      border: none;
+      border-radius: 4px;
+      color: #FFF;
+      cursor: pointer;
+    }
+    .todo-list-box li .del-btn:active {
+      background-color: #E57373;
+    }
+    .todo-list-box li .chk-box input[type="checkbox"] {
+      display: none;
+    }
+    .todo-list-box li .chk-box input[type="checkbox"] + label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .todo-list-box li .chk-box input[type="checkbox"] + label::before {
+      content: '';
+      width: 12px;
+      min-width: 12px;
+      height: 12px;
+      background-color: #FFF;
+      border: 1px solid #e1e1e1;
+      border-radius: 4px;
+    }
+    .todo-list-box li .chk-box input[type="checkbox"]:checked + label {
+      text-decoration: line-through;
+    }
+    .todo-list-box li .chk-box input[type="checkbox"]:checked + label::before {
+      background: #FFF url('images/check.svg') no-repeat 50% 50% / cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-list">
+    <header class="todo-header">Todo List</header>
+    <div class="todo-container">
+      <span class="inp-box">
+        <input type="text" class="inp" placeholder="할 일 추가">
+        <button type="button" class="add-btn">추가</button>
+      </span>
+      <ul class="todo-list-box">
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  
+
+  let writeTodo = document.querySelector('.todo-container .inp-box .inp');
+  let addBtn = document.querySelector('.add-btn');
+  let todoListBox = document.querySelector('.todo-list-box');
+  
+  function TodoList(){ // input에 입력된 값
+    let writeTodoVal = writeTodo.value;
+    let todoCount = document.querySelectorAll('.todo-list-box li').length+1;
+
+    if ( writeTodoVal === '' ) {
+      alert('할 일을 입력해주세요.');
+      return
+    }
+    let addList = `
+      <li>
+        <span class="chk-box">
+          <input type="checkbox" id="check0${todoCount}">
+          <label for="check0${todoCount}">${writeTodoVal}</label>  
+        </span>
+        <button type="button" class="del-btn">삭제</button>
+      </li>
+    `
+    todoListBox.insertAdjacentHTML('beforeend', addList);
+    writeTodo.value = '';
+    writeTodo.focus();
+  }
+
+  function DeleteTodo(){ // 등록된 Todo-List 삭제
+    let delBtn = document.querySelectorAll('.del-btn');
+  
+    delBtn.forEach(function(e, i){
+      e.addEventListener('click', function(el, idx){
+        e.parentElement.classList.add('remove');
+        setTimeout(function(){
+          e.parentElement.remove();
+        },600);
+      });
+    })
+  }
+
+  addBtn.addEventListener('click', function(e){ // 추가 버튼 클릭시
+    TodoList();
+    DeleteTodo();
+  })
+
+  writeTodo.addEventListener('keypress', function(e){ // Enter 입력시
+    if (e.key === 'Enter') {
+      TodoList();
+      DeleteTodo();
+    }
+  })
+</script>

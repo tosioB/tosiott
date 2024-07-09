@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>변형과 전환</title>
+  <style>
+    .parent {
+      display: inline-block;
+      margin: 0 20px;
+    }
+    .child {
+      width: 150px;
+      height: 150px;
+      background-color: teal;
+      color: #FFF;
+    }
+    .parent:nth-child(1) > .child {transform: translate(30px, 50px);}
+    .parent:nth-child(2) > .child {transform: scale(1, 1.5)}
+    .parent:nth-child(3) > .child {transform: skew(45deg);}
+    .parent:nth-child(4) > .child {transform: rotate(45deg);}
+    .parent:nth-child(5) > .child:hover {
+      width: 300px;
+      height: 300px;
+      transition-property: width; /* 대상 */
+      transition-duration: 5s; /* 걸리는 시간 */
+      transition-delay: 2s; /* 몇초후에 시작 */
+      transition-timing-function: ease-out;  /* 진행 속도 변화 */
+      /* transition: width 5s 2s ease-out,
+      height 2s 3s linear; 축약 */
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child">
+      transform: translate(30px, 50px);
+    </div>
+  </div>
+  <div class="parent">
+    <div class="child">
+      transform: scale(1, 1.5)
+    </div>
+  </div>
+  <div class="parent">
+    <div class="child">
+      transform: skew(45deg);
+    </div>
+  </div>
+  <div class="parent">
+    <div class="child">
+      transform: rotate(45deg)
+    </div>
+  </div>
+  <div class="parent">
+    <div class="child">
+      hover, transition
+    </div>
+  </div>
+</body>
+</html>

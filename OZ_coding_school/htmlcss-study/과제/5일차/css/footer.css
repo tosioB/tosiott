@@ -1,0 +1,43 @@
+#footer .footer-top {
+  display: flex;
+  padding: 6.4rem 0 4rem;
+
+}
+#footer .footer-top .about-us {
+  width: 25%;
+  padding-right: 4rem;
+}
+#footer .footer-top .about-us .tit {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+#footer .footer-top .about-us ul li {
+  /* width: 25%; */
+}
+#footer .footer-top .about-us ul li a {
+  display: inline-block;
+  font-size: 1.6rem;
+  line-height: 4.2rem;
+  color: #555;
+}
+#footer .footer-top .about-us ul li a:hover {
+  text-decoration: underline;
+}
+#footer .footer-btm {
+  padding: 3.2rem 0 4rem;
+  border-top: 0.1rem solid #d9dbe1;
+}
+#footer .footer-btm ul {
+  display: flex;
+}
+#footer .footer-btm ul li {
+  padding-right: 0.9rem;
+  margin-right: 0.8rem;
+  font-size: 1.4rem;
+}
+#footer .footer-btm .copyright {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #555;
+}

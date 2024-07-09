@@ -1,0 +1,59 @@
+.footer {
+  padding: 0 1rem;
+  border-top: 1px solid #C3C4C7;
+  color: 515255;
+}
+.footer-container {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.footer-menu {
+  padding: 3rem 0;
+}
+.footer-apps {
+  float: right;
+}
+.footer-appdown {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.footer-appbtn {
+  width: 18.75rem;
+  justify-content: space-between;
+}
+.footer-appbtn button {
+  width: 48%;
+  height: 2.75rem;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+}
+.footer-nav ul {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  list-style: none;
+}
+.footer-nav ul:nth-child(3) {
+  margin-right: 15%;
+}
+.footer-nav ul li {
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .footer-apps {
+    display: flex;
+    margin-bottom: 1.25rem;
+    float: none;
+  }
+  .footer-appbtn {
+    display: none;
+  }
+}

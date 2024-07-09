@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>햄버거바 만들기</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    ul, ol {
+      list-style: none;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+    }
+    .header {
+      background-color: #000;
+    }
+    .header .box {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      max-width: 1280px;
+      height: 60px;
+      padding: 0 48px;
+      margin: 0 auto;
+      color: #FFF;
+    }
+    .gnb .menu-btn {
+      display: none;
+      color: #FFF;
+      cursor: pointer;
+    }
+    .gnb ul{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .gnb ul li button {
+      height: 60px;
+      padding: 0 12px;
+      font-size: 18px;
+      color: #FFF;
+      cursor: pointer;
+    }
+    .gnb ul li button.active {
+      background-color: #388E3C;
+    }
+    @media screen and (max-width: 768px) {
+      .box {
+        justify-content: space-between;
+      }
+      .gnb .menu-btn {
+        display: block;
+      }
+      .gnb ul {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        flex-direction: column;
+        gap: 0;
+        width: 180px;
+        background-color: #000;
+        border-top: 1px solid #e1e1e1;
+        visibility: hidden;
+      }
+      .gnb ul.active {
+        visibility: visible;
+      }
+      .gnb ul li {
+        width: 100%;
+      }
+      .gnb ul li button{
+        width: 100%;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="box">
+      <h1 class="logo">로고</h1>
+      <div class="gnb">
+        <button type="button" class="menu-btn">
+          <span class="material-symbols-outlined">
+            lunch_dining
+            </span>
+        </button>
+        <ul>
+          <li>
+            <button type="button" class="active">메뉴1</button>
+          </li>
+          <li>
+            <button type="button">메뉴2</button>
+          </li>
+          <li>
+            <button type="button">메뉴3</button>
+          </li>
+          <li>
+            <button type="button">메뉴4</button>
+          </li>
+          <li>
+            <button type="button">메뉴5</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</body>
+</html>
+<script>
+  let menuBtn = document.querySelector('.menu-btn');
+  let menuList = document.querySelector('.gnb ul');
+  menuBtn.addEventListener('click', function(){
+    menuList.classList.toggle('active');
+  });
+</script>

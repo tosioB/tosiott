@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간단한 반응형 웹 만들기</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      background: url('https://cdn.pixabay.com/photo/2023/11/16/05/02/mountains-8391433_1280.jpg') no-repeat 50% 50% / cover;
+      color: #FFF;
+    }
+    .box {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      word-break: keep-all;
+    }
+    .box p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .box p.width {
+      font-size: 30px;
+      font-weight: 700;
+    }
+    @media screen and (max-width: 1080px) {
+      body {
+        background: url('https://cdn.pixabay.com/photo/2021/06/16/20/22/cat-6342145_1280.jpg') no-repeat 50% 50% / cover;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      body {
+        background: url('https://cdn.pixabay.com/photo/2016/02/27/21/23/puppy-1226296_1280.jpg') no-repeat 50% 50% / cover;
+        color: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>간단한 반응형 웹 만들기</h1>
+    <p>현재 화면의 너비는</p>
+    <p class="width"></p>
+  </div>
+</body>
+</html>
+<script>
+  let width = document.querySelector('.width');
+  width.innerHTML = `${window.innerWidth}px`;
+  window.addEventListener('resize', function(){
+    width.innerHTML = `${window.innerWidth}px`
+  })
+  
+</script>

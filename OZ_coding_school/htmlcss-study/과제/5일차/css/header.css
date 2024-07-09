@@ -1,0 +1,214 @@
+#header {
+  height: 12rem;
+  padding: 0 2.4rem;
+  background-color: #FFF;
+  border-bottom: 0.1rem solid #e1e1e1;
+  position: relative;
+  z-index: 99;
+}
+#header .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* left */
+#header .left {
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+  margin-top: 3.6rem;
+}
+/* logo */
+#header .logo {
+  display: flex;
+  align-items: center;
+}
+#header .logo a {
+  display: block;
+  height: 5.4rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#header .logo a.koreanair-logo {
+  width: 16.2rem;
+  background-image: url('../images/logo--koreanair-pc.png');
+}
+#header .logo a.skyteam-logo {
+  width: 3.8rem;
+  background-image: url('../images/logo--skyteam-pc.png');
+}
+
+/* gnb */
+#header .gnb > ul {
+  display: flex;
+}
+#header .gnb > ul .one-dep {
+  height: 8.4rem;
+  padding: 0 3.2rem;
+  font-size: 2.1rem;
+  text-align: center;
+  position: relative;
+}
+#header .gnb > ul .one-dep:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--main-color);
+}
+#header .gnb > ul .open-div {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 12rem;
+  width: 100%;
+  background-color: #FFF;
+  box-shadow: 0 20px 32px 0 rgba(0, 0, 0, 0.2);
+}
+#header .gnb > ul > li:hover .open-div {
+  display: block;
+}
+#header .gnb > ul .inner {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 4rem 3.2rem; */
+  width: 100%;
+  max-width: 144rem;
+  padding: 4.8rem 0;
+  margin: 0 auto;
+  font-size: 0;
+}
+#header .gnb > ul .two-dep {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem 3.2rem;
+  width: calc(100% - 24.4rem);
+}
+#header .gnb > ul .two-dep .two-dep-list {
+  width: calc(25% - 2.4rem);
+}
+#header .gnb > ul .two-dep .two-dep-list h2 a {
+  padding-right: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 700;
+  background: url('../images/icon-two-tepth-arr.svg') no-repeat 100% 50%;
+}
+#header .gnb > ul .two-dep .two-dep-list h2 a:hover {
+  text-decoration: underline;
+}
+#header .gnb > ul .two-dep .two-dep-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+#header .gnb > ul .two-dep .two-dep-list ul li a {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  color: #555;
+}
+#header .gnb > ul .two-dep .two-dep-list ul li a:hover {
+  text-decoration: underline;
+}
+#header .gnb > ul .banner {
+  width: 24.4rem;
+  padding-left: 2.4rem;
+}
+#header .gnb > ul .banner ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 0.4rem;
+}
+#header .gnb > ul .banner ul li a {
+  display: block;
+  position: relative;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+#header .gnb > ul .banner ul li a:hover {
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px, rgb(0, 100, 222) 0px 0px 0px 3px;
+}
+#header .gnb > ul .banner ul li a h2 {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 700;
+}
+#header .gnb > ul .banner ul li a h2::after {
+  content: '';
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url('../images/icon-two-tepth-arr.svg') no-repeat 100% 50%;
+  vertical-align: text-bottom;
+}
+#header .gnb > ul .banner ul li a img {
+  width: 100%;
+  height: 100%;
+}
+
+/* right */
+#header .right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2.4rem;
+  padding-top: 1.2rem;
+}
+
+/* util-box */
+#header .util-box {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+#header .util-box .util-btn {
+  display: block;
+  padding-left: 2.8rem;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  background-size: 2.4rem 2.4rem;
+  border-radius: 0.4rem;
+}
+#header .util-box .util-btn:hover {
+  box-shadow: rgb(0, 100, 222) 0 0 0 1px;
+}
+#header .util-box .util-btn.event {background-image: url('../images/icon--event.svg');}
+#header .util-box .util-btn.faq {background-image: url('../images/icon--faq.svg');}
+#header .util-box .util-btn.lang {background-image: url('../images/flag-country-sprite-24x24.jpg'); background-position: 0 0; background-size: 2.4rem;}
+#header .util-box .util-btn.sign-up {background-image: url('../images/icon--sign-up.svg');}
+
+/* btn-box */
+#header .btn-box {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+#header .search-btn {
+  width: 23rem;
+  height: 4rem;
+  padding: 0 4.8rem 0 1.6rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.06rem;
+  background: #FFF url('../images/icon--search.svg') no-repeat calc(100% - 0.8rem) 50% / 2.4rem;
+  border: 0.1rem solid;
+  border-color: var(--main-color);
+  border-radius: 0.8rem;
+}
+#header .login-btn {
+  height: 4rem;
+  min-width: 11.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: var(--main-color);
+  border-radius: 2rem;
+  color: #FFF;
+}

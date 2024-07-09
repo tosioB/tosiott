@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>배경화면과 박스 디자인</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(45deg, #B2EBF2, #C6FF00);
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      padding: 0 20px;
+      background-color: #FFF;
+      border: 2px solid #1976D2;
+      border-radius: 4px;
+    }
+    .text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1976D2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="text">hi🖐</p>
+  </div>
+</body>
+</html>

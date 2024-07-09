@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미디어쿼리</title>
+  <style>
+    div.box {
+      width: 150px;
+      height: 150px;
+      background-color: teal;
+    }
+    @media screen and (max-width: 768px) {
+      /* 
+        화면(screen)의
+        너비가 768px 이하일 경우에
+        여기에 정의된 스타일 선언문을
+        추가 적용할 것이다!
+      */
+      div.box {
+        background-color: orange;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>채팅방 만들기</title>
+  <link rel="stylesheet" href="chat.css">
+  <link rel="stylesheet" href="text.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+  <div class="container">
+    <main class="chat-screen">
+      <section class="chat-screen-bar">
+        <div class="user">
+          <div class="user-column">
+            <div class="user-pic">
+              <img src="images/cat.jpg">
+            </div>
+          </div>
+          <div class="user-column">
+            <p class="user-nick">친구</p>
+            <p class="user-count">2</p>
+          </div>
+        </div>
+        <div class="chat-con">
+          <div class="your-chat chatting">
+            <span class="img-box">
+              <img src="images/car.jpg">
+            </span>
+            <pre class="message">
+              - 채팅창은 항상 최하단을 유지
+              - 내용 작성 후 전송 버튼 클릭시 내용 전송
+              - 내용 작성 후 엔터키 누를시 내용 전송
+              - 내용이 없이 엔터키/전송버튼 누를시 경고창 알람
+              - 내용 입력할 때 shift+enter 누를시 줄바꿈
+            </pre>
+          </div>
+          <div class="my-chat chatting">
+            <pre class="message">어려움</pre>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--  -->
+    <form class="chat-form">
+      <section class="chat-form-field">
+        <button type="button" class="plus">
+          <span class="material-symbols-outlined">
+            add
+          </span>
+        </button>
+        <button type="button" class="camera">
+          <span class="material-symbols-outlined">
+            photo_camera
+          </span>
+        </button>
+        <button type="button" class="add-img">
+          <span class="material-symbols-outlined">
+            image
+          </span>
+        </button>
+        <textarea class="chat-form-msg"></textarea>
+        <pre class="chat-form-msg-pre">dd</pre>
+        <button type="button" class="chat-form-bt">
+          <span class="material-symbols-outlined">
+            send
+          </span>
+        </button>
+      </section>
+    </form>
+  </div>
+</body>
+</html>
+<script>
+  let chatCon = document.querySelector('.chat-con');
+  let chatting = document.querySelector('.chat-form-msg');
+  let sendBtn = document.querySelector('.chat-form-bt')
+
+  function btmScreen(){
+    chatCon.scrollTop = chatCon.scrollHeight;
+  }
+
+  function inputMessage(){
+    let chattingVal = chatting.value;
+    if ( chattingVal === '' ) {
+      alert('내용을 입력해주세요.')
+    } else {
+      let newMessage = `
+        <div class="my-chat chatting">
+          <p class="message">${chattingVal}</p>
+        </div>
+      `
+      return newMessage
+    }
+    return ''
+  }
+
+  sendBtn.addEventListener('click', function(){
+    chatCon.insertAdjacentHTML('beforeend', inputMessage());
+    chatting.value = '';
+    btmScreen()
+  })
+
+  chatting.addEventListener('keypress', function(e){
+    if (e.key === 'Enter' && !e.shiftKey) { // enter
+      chatCon.insertAdjacentHTML('beforeend', inputMessage());
+      chatting.value = '';
+      btmScreen()
+      e.preventDefault();
+    } else if (e.key === 'Enter') { // shift + enter
+      return
+    }
+  })
+
+  btmScreen()
+
+</script>
