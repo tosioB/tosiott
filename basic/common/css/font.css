@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100;
+  src: url(/common/font/NotoSansKR-Thin.woff2) format("woff2"), url(/common/font/NotoSansKR-Thin.woff) format("woff"), url(/common/font/NotoSansKR-Thin.otf) format("opentype"), url(/common/font/NotoSansKR-Thin.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: url(/common/font/NotoSansKR-Light.woff2) format("woff2"), url(/common/font/NotoSansKR-Light.woff) format("woff"), url(/common/font/NotoSansKR-Light.otf) format("opentype"), url(/common/font/NotoSansKR-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/common/font/NotoSansKR-Regular.woff2) format("woff2"), url(/common/font/NotoSansKR-Regular.woff) format("woff"), url(/common/font/NotoSansKR-Regular.otf) format("opentype"), url(/common/font/NotoSansKR-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: url(/common/font/NotoSansKR-Medium.woff2) format("woff2"), url(/common/font/NotoSansKR-Medium.woff) format("woff"), url(/common/font/NotoSansKR-Medium.otf) format("opentype"), url(/common/font/NotoSansKR-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: url(/common/font/NotoSansKR-Bold.woff2) format("woff2"), url(/common/font/NotoSansKR-Bold.woff) format("woff"), url(/common/font/NotoSansKR-Bold.otf) format("opentype"), url(/common/font/NotoSansKR-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 900;
+  src: url(/common/font/NotoSansKR-Black.woff2) format("woff2"), url(/common/font/NotoSansKR-Black.woff) format("woff"), url(/common/font/NotoSansKR-Black.otf) format("opentype"), url(/common/font/NotoSansKR-Black.ttf) format("truetype");
+}
+@font-face {
+  font-family: "BlackHanSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/common/font/BlackHanSans-Regular.ttf) format("truetype");
+}
