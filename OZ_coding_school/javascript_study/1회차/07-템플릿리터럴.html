@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>템플릿 리터럴</title>
+</head>
+<body>
+  <script>
+
+    /* *****템플릿 리터럴
+      템플릿 리터럴은 문자열을 표현하는 또 다른 방법으로,
+      따옴표를 이용해 표현하는 방법에 비해 조금 늦게 추가된 문법이다.
+      템플릿 리터럴은 백틱을 이용해 표현된다.
+      백틱(`)은 키보드 왼쪽 상단에 있으며, 쉬프트 키와 함께 누르면 물결(~)이 된다.
+    */
+
+    // 따옴표를 이용한 기본의 문자열
+    // let str1 = '작은 따옴표'
+    // let st2 = "큰 따옴표"
+
+    // 백틱을 이용한 템플릿 리터럴
+    // let str3 = `이게 백틱입니다.`
+
+    /* *****표현식 삽입 방법
+      템플릿 리터럴은 반환값이 존재하는 자바스크립트 코드, 즉 표현식을 내장할 수 있는 문자열 표현법이다.
+      ㅣ는 문자열의 내용에 데이터를 삽입하는 것을 의미한다.
+      템플릿 리터럴로 표현한 문자열 내부에 플레이스홀더(${})를 기입하고,
+      그 안에 데이터를 기입하면 데이터는 문자열의 멤버가 된다.
+      데이터를 반환하는 메소드 또한 데이터와 같이 취급할 수 있다.
+    */
+
+    const dog = "강아지";
+    const cat = '고양이';
+    console.log(typeof cat);
+
+    const modifier = "귀여운";
+    const prettyDog = `${modifier} ${dog}와 ${cat}`;
+    console.log(prettyDog); // 귀여운 강아지와 고양이
+
+    const prettyPet = `${modifier} ${prompt("좋아하는 동물은?")}`;
+    console.log(prettyPet); // prompt에 입력한 값이 반환됨
+
+  </script>
+</body>
+</html>
