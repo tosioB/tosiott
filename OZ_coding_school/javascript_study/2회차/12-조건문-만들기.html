@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문 만들기</title>
+</head>
+<body>
+
+  <h1></h1>
+  <p></p>
+  
+  <script>
+
+    /* *****조건문(if문)
+      조건문이란 주어진 조건의 참/거짓 여부에 따라 프로그램의 흐름을 결정할 수 있는 구문을 뜻한다.
+      여기에서 조건이란, 불리언 데이터를 반환하거나 불리언 데이터로 해석할 수 있는 표현식을 의미한다.
+    */
+
+    // document.querySelector.("p"); - p태그를 선택
+    // document.querySelector.("#text"); - id가 text인 요소를 선택
+    // document.querySelector.(".text"); - class가 text인 요소를 선택
+
+    let h1 = document.querySelector('h1');
+    let p = document.querySelector('p');
+
+    let isThere = confirm("당신의 연령층은??")
+
+    if ( isThere ) {
+      h1.textContent = '문서의 제목!!'
+    }
+
+    let age = parseInt(prompt("나이가 어떻게 되세요?"));
+    if ( age >= 20 ) {
+      p.textContent = '성인입니다.';
+    } else if ( age >= 14 ) {
+      p.textContent = '청소년입니다.'
+    } else if ( age >= 8 ) {
+      p.textContent = '어린이입니다.'
+    } else (
+      p.textContent = '미취학아동입니다.'
+    )
+  </script>
+
+</body>
+</html>

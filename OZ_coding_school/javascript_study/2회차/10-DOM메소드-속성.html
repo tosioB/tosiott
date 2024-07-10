@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM 메소드 및 속성</title>
+</head>
+<body>
+  
+  <h1 id="song-title" class="heading text" title="소녀시대 데뷔곡">
+    <span>다시 만난 세계</span>
+  </h1>
+  <p class="lyrics">사랑해 너 이 느낌 이대로</p>
+  <p class="lyrics">그려왔던 헤메임에 끝</p>
+  
+  <script>
+
+    /* *****DOM 관련 메소드 정리
+      DOM을 다루는 명령문은 입력-처리-출력의 절차를 수행한다.
+    */
+
+    // 메소드 - 어떤 요소를 선택한다.
+    // document.querySelector.(x); - css 선택자 x를 기반으로 첫 번째 요소 선택
+    // document.querySelectorAll.(x); - css 선택자 x를 기반으로 여러 요소 선택
+    // document.getElementById.(x); - id 속성의 값을 기반으로 요소 선택
+    // document.getElementsByClassName.(x); - class 속성의 값을 기반으로 요소 선택
+    // document.write.(x); - 문서에 콘텐츠 x를 추가 입력
+
+    // 속성 - 내가 선택한 요소의 객체에 대해서 가지고 있는 값을 확인하고 수정.
+    // Element.textContent - 요사가 가진 텍스트 콘텐츠를 반환
+    // Element.innerHTML - 요소 내에 쓰여진 HTML 코드를 텍스트 형태로 반환
+    // Element.className - 요소의 class 속성값을 반환
+    // Element.style - 요소의 style 관련 속성값들을 반환
+    // Element.title - 요소의 title 속성값을 반환
+
+    console.log(document.querySelectorAll(".lyrics"));
+    console.log(document.getElementsByClassName('lyrics'));
+    let title = document.getElementById('song-title');
+
+    console.log(title.textContent); // 다시 만난 세계 - 텍스트와 텍스트 앞뒤의 공백까지 출력
+    console.log(title.innerText); // 다시 만난 세계 - 오로지 텍스트만 출력
+    console.log(title.className); // heading text
+    console.log(title.style);
+    console.log(title.title); // 소녀시대 데뷔곡
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비교 연산</title>
+</head>
+<body>
+  
+  <script>
+
+    /* *****비교연산자
+      비교연산자는 언제나 boolean 데이터를 반환한다.
+      크냐 작냐를 비교하는 대소 비교, 같냐 다르냐를 비교하는 등가 비교는
+      모두 하나의 질문이며, 질문에 대한 답이 참(true) 또는 거짓(false)인 것이다.
+      예를들어)
+      3이 5보다 작냐? true
+      6과 6이 다르냐? false
+    */
+
+    // > 크다
+    // < 작다
+    // >= 크거나 같다
+    // <= 작거나 같아
+    // == 같다
+    // != 같지 않다
+    // === 완전히 같다
+    // !== 완전히 같지않다
+
+    /* *****등가비교
+      등가 비교를 할 때, 등호(=)의 개수에 따라 비교 규칙에 차이를 보인다.
+      ==는 "추상적 같음 비교"로써 자료형이 서로 다르더라도 같다고 판단할 수 있는 비교이다.
+      ===는 "엄격한 같음 비교"로써 자료형과 데이터가 모두 일치해야만 같다고 판단한다.
+    */
+
+    // console.log('1' == 1) // true
+    // console.log('1' === 1) // false
+
+    let stringNumber = '10';
+    console.log(stringNumber == 10); // true
+    console.log(stringNumber === 10); // false
+
+    /* --------------------------------------------------------------------------- */
+
+    let type = prompt('숫자를 입력해도 console에는 string 타입이 나옴'); // prompt에 입력한 값은 문자열을 반환(숫자를 입력해도 문자를 반환)
+    console.log(typeof type); // string
+
+    // parseInt() - 숫자 형태로 되어있는 문자열을 숫자로 바꿔준다.
+    let typeNum = parseInt(prompt('parseInt를 사용했기 때문에 console에는 number 타입이 나옴'));
+    console.log(typeof typeNum); // number
+
+  </script>
+
+</body>
+</html>
