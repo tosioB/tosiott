@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수 정의하고 호출하기</title>
+</head>
+<body>
+
+  <div id="container"></div>
+  
+  <script>
+
+    /* *****함수
+      함수는 '불러서 쓸 수 있는 코드 조각'이다. 변수를 선언하고 데이터를 대입하면
+      변수의 이름을 데이터(값) 대신 사용할 수 있는 것처럼, 함수를 선언하고 기능을 정의하면
+      함수의 이름을 코드 조각 대신 사용할 수 있다.
+
+      함수를 만드는 방법 중 대표적인 두 가지
+      - 선언식으로 만든 함수
+      function 함수명(){
+        // 함수의 기능을 표현한 구문
+      }
+      
+      - 표현식으로 만든 함수
+      const 함수명 = function(){
+        // 함수의 기능을 표현한 구문
+      }
+
+      함수의 이름짓기 규칙은 변수와 같다.
+      기능을 정의하는 만큼 동사를 사용하는 것이 좋다.
+
+      함수가 만들어지고 나면, 함수명은 스스로 보관하고 있는 구문 대신 사용될 수 있다.
+      그리고 함수가 사용되기 위해서는 함수를 '호출'해야만 한다!
+      함수를 호출할 때는 함수의 이름 뒤에 반드시 소괄호를 붙여줘야 한다.
+
+      예시)
+      const sayHello = function(){
+        let number = 3 + 3
+        console.log(number)
+      }
+      sayHello() // 함수호출
+    */
+
+    function sayYes(){ // 선언식으로 만든 함수 - 호이스팅이 가능하다.
+      alert('Yes!');
+    }
+    sayYes(); // 함수호출
+
+    const sayNo = function(){ // 표현식으로 만든 함수
+      alert('No!');
+    }
+    sayNo(); // 함수호출
+
+
+    createParagraph();
+    createParagraph();
+    createParagraph();
+    createParagraph();
+    createParagraph();
+
+    function createParagraph(){
+      const container = document.getElementById('container');
+      const p = document.createElement('p');
+      p.textContent = '새롭게 만들어진 문단 태그!';
+      container.appendChild(p);
+    }
+    
+
+    /* --------------------------------------------------------------------------- */
+
+  </script>
+
+</body>
+</html>

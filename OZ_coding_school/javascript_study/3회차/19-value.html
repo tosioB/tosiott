@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>value 속성</title>
+</head>
+<body>
+
+  <input type="text" id="talk">
+  <input type="button" id="push" value="push">
+  <div id="contents1"></div>
+  <br>
+  <hr>
+  <br>
+
+  <form id="form">
+    <input type="text" name="name">
+    <input type="text" name="nick">
+    <input type="submit" name="submit">
+  </form>
+  <div id="contents2"></div>
+  
+  <script>
+
+    /* *****입력 요소로부터 값 읽어들이기
+      <input>, <select> 처럼 사용자로부터 입력을 받는데 사용 되는 요소들이 있다.
+      여기에서 사용자가 입력한 값을 읽어들일 때는 요소의 value 속성에 접근
+
+      - 요소에 쓰여져 있는 텍스트에 접근하고 싶다: textContent
+      - 사용자가 직접 요소에 입력한 값에 접근하고 싶다: value
+
+      <form>요소
+      여러 입력 요소를 포함할 수 있는 폼 요소로부터 여러 입력 값을 읽어들일 때는
+      개별 입력 요소의 name 속성값을 토대로 입력값에 접근할 수 있다.
+      <form>
+        <input name="이름">
+        <input name="별명">
+        <input type="submit">
+      </form>
+
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(e){
+        console.log(e.target.이름.value);
+        console.log(e.target.별명.value);
+      })
+    */
+
+    const input = document.getElementById("talk");
+    const button = document.getElementById("push");
+    const contents1 = document.getElementById('contents1');
+
+    input.addEventListener('keyup', function(e){
+      console.log(e.target.value);
+    })
+
+    button.addEventListener('click', function(){
+      const p = document.createElement('p');
+      p.textContent = input.value;
+      contents1.appendChild(p);
+      input.value = '버튼 누르면 써짐';
+    });
+
+    /* --------------------------------------------------------------------------- */
+
+    const form = document.getElementById('form');
+    const contents2 = document.getElementById('contents2');
+
+    form.addEventListener('submit', function(event){
+      event.preventDefault(); // 기본적인 기능을 차단
+      const p = document.createElement('p');
+      p.textContent = `${event.target.name.value}의 별명은 ${event.target.nick.value}`
+      contents2.appendChild(p);
+    });
+  </script>
+
+</body>
+</html>

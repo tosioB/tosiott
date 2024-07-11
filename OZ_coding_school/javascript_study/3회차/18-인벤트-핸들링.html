@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 & 이벤트 핸들링</title>
+</head>
+<body>
+
+  <button id="span">SPAN</button>
+  <button id="strong">STRONG</button>
+  <button id="mark">MARK</button>
+  <hr>
+  
+  <script>
+
+    /* *****이벤트 핸들링
+      이벤트란 DOM에서 발생하는 다양한 액션 또는 상호작용 동작을 나타내는 프로그래밍 인터페이스
+      
+      웹에서 발생하는 이벤트의 예
+      - 웹페이지 사용자가 버튼을 클릭했다(클릭이벤트)
+      - 웹페이지 사용자가 키보드를 눌렀다(키다운 이벤트)
+      - 웹페이지 사용자가 입력 폼의 내용을 제출했다(제출 이벤트)
+      - 외 다수
+    */
+
+    const spanBtn = document.getElementById('span');
+    const strongBtn = document.getElementById('strong');
+    const markBtn = document.getElementById('mark');
+
+    const handleClick = function(event){
+      if (event.target.id == 'span') {
+        const span = document.createElement('span');
+        span.textContent = '새로 생긴 span 태그입니다.'
+        document.body.append(span);
+      } else if (event.target.id == 'strong') {
+        const strong = document.createElement('strong');
+        strong.textContent = '새로 생긴 strong 태그입니다.'
+        document.body.append(strong);
+      } else if (event.target.id == 'mark') {
+        const mark = document.createElement('mark');
+        mark.textContent = '새로 생긴 mark 태그입니다.'
+        document.body.append(mark);
+      }
+    }
+
+    spanBtn.addEventListener('click', handleClick)
+    strongBtn.addEventListener('click', handleClick)
+    markBtn.addEventListener('click', handleClick)
+
+  </script>
+
+</body>
+</html>

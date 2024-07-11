@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인수 & 반환</title>
+</head>
+<body>
+
+  <div id="container"></div>
+  
+  <script>
+
+    /* *****인수 & 반환
+      함수 호출문은 '함수명 + 소괄호'이다.
+      소괄호의 역할은 함수가 실행될 때 사용할 재료를 전달받는 것이다.
+      재료란 데이터를 뜻하며 이렇게 전달되는 데이터를 가리켜 '인수(argument)'라 한다.
+      
+      인수를 전달받아 기능을 수행하는 함수를 만들 때는 함수 정의 시 '매개변수(parameter)'를
+      추가해야 한다. 이는 함수의 기능을 다양화하는 유용한 도구다
+      예시)
+      function sayVegetable(vagetable){
+        console.log('함수에 전달된 채소는?');
+        console.log(vagetable);
+      }
+      sayVegetable('당근');
+      sayVegetable('오이');
+
+      예시2)
+      function sayFood(food1, food2){
+        console.log(food1);
+        console.log(food2);
+        console.log('먹고싶다');
+      }
+      sayFood('당근', '돈까스');
+      sayFood('오이', '햄버거');
+
+      함수를 만들 때 함수가 데이터를 반환하도록 할 수 있다.
+      함수가 데이터를 반환한다는 것은 함수 호출문이 데이터로 대체됨을 뜻한다.
+      예시)
+      function getThree(){
+        // 이 함수를 호출하면 호출문이 3을 반환할 것
+        return 3;
+        // return 키워드는 두 가지 기능을 가지고 있다. 데이터 반환 그리고 함수 강제 종료
+      }
+    */
+
+    console.log(createParagraph("첫번째 문단", "red"))
+    console.log(createParagraph("두번째 문단", "blue"))
+    console.log(createParagraph("세번째 문단", "green"))
+
+    function createParagraph(content, color){
+      const container = document.getElementById('container');
+      const p = document.createElement('p');
+      p.style.color = color;
+      p.textContent = content;
+      container.appendChild(p);
+
+      return `방금 만든 콘텐츠 : ${content}, 색상: ${color}`;
+    }
+
+    // function sample(){
+    //   console.log("반환 기능 테스트") // 얘도 실행되고
+    //   return "짜자잔" // 마지막에 얘를 반환함
+    // }
+    // console.log(sample())
+
+  </script>
+
+</body>
+</html>

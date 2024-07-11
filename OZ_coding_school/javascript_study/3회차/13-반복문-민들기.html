@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문 만들기</title>
+</head>
+<body>
+  
+  <script>
+
+    /* *****반복문(for문)
+      for ( 초기식; 조건식; 반복식 ) {
+        // 조건이 true인 경우 반복 수행할 코드
+      }
+      초기식: 반복 조건의 초기화 작업
+      반복식: 반복이 한번 끝날 때마다 실행될 작업
+
+      예시)
+      for ( let i = 1; i <=5; i +=1 ) {
+        console.log("good");
+      }
+      초기식 - 변수 i를 1로 초기화했다.
+      조건식 - i가 5보다 작거나 같으면 반복할 것이다.
+      반복식 - 동작이 수행될 때마다 i는 1씩 증가할 것이다.
+      최종적으로 5회 반복을 수행하게 된다!
+    */
+
+    // 초기식, 초건식, 반복식
+    // 초기식에서 선언한 변수는 for문 밖에선 사용 불가!
+    for( let i = 0; i < 5; i += 1 ) {
+      document.write(`for문은 ${i+1}번째 반복중... 이다!<br>`)
+    }
+
+    /* --------------------------------------------------------------------------- */
+
+     /* *****반복문(while문)
+      while ( 조건 ) {
+        // 조건이 true인 경우 반복 수행할 코드
+      }
+      // 조건이란 불리언을 반환하거나 불리언으로 해석될 수 있는 표현식
+      // 반복 구문은 '루프(loop)'라고도 한다.
+
+      예시)
+      while ( prompt("set number") != 0 ) {
+        document.write("get number1<br>")
+      }
+      prompt() 메소드를 이용해 사용자로부터 정보를 입력받자.
+      주어진 정보가 0이 아닐 때는 document.write()명령을 수행하고, 0일때는 작업을 종료하자.
+    */
+    let a = 0;
+    while ( a < 5 ) {
+      document.write(`while문은 ${a+1}번째 반복중... 이다!<br>`);
+      a += 1;
+    }
+
+    while ( confirm("반복 실행 할까요?") ) {
+      // 취소를 누를때까지 계속 반복함
+    }
+
+  </script>
+
+</body>
+</html>
