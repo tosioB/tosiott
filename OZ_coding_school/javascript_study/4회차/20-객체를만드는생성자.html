@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체를 만드는 생성자</title>
+</head>
+<body>
+  
+  <script>
+
+    /* *****객체
+      함수인데, 객체를 생성할 목적으로 정의하는 함수, 설계도 개념
+      자바스크립트에서 기본으로 제공하지 않는 데이터 유형을 직접 만들 수 있다.
+    */
+
+    function BestSinger(){
+      this.name = "에스파"
+      this.member = "카리나, 윈터, 닝닝, 지젤"
+      this.singing = function(){
+        console.log("수수수 수퍼노바")
+      }
+    }
+
+    const easpa = new BestSinger();
+    console.log(easpa.name); // 에스파
+    console.log(easpa.member); // 카리나, 윈터, 닝닝, 지젤
+    easpa.singing(); // 수수수 수퍼노바
+
+    /* --------------------------------------------------------------------------- */
+
+    function Singer(name, member){
+      this.name = name
+      this.member = member
+    }
+
+    const ohMyGirl = new Singer("오마이걸", "효정, 승희, 미미, 유빈, 아린, 유아");
+    console.log(ohMyGirl.name); // 오마이걸
+    console.log(ohMyGirl.member); // 효정, 승희, 미미, 유빈, 아린, 유아
+    
+  </script>
+
+</body>
+</html>

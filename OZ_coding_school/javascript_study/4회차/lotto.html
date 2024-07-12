@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로또 추첨 게임</title>
+</head>
+<body>
+  <div class="container">
+    <div class="lotto">
+      <h3><span id="today"></span>로또 번호 추첨</h3>
+      <div class="numbers"></div>
+      <button id="draw">추첨</button>
+      <button id="reset">다시</button>
+    </div>
+  </div>
+
+  <script>
+    const todaySpan = document.querySelector('#today');
+    const numbers = document.querySelector('.numbers');
+    const drawBtn = document.querySelector('#draw');
+    const resetBtn = document.querySelector('#reset');
+
+    let lottoNumbers = [];
+
+    const today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let date = today.getDate();
+    todaySpan.textContent = `${year}년 ${month}월 ${date}일`
+
+    function paintNumber(number){
+      const eachNumDiv = document.createElement('div');
+      eachNumDiv.classList.add('eachnum');
+      eachNumDiv.textContent = number;
+      numbers.append(eachNumDiv);
+    }
+
+    drawBtn.addEventListener('click', () => {
+      while(lottoNumbers.length < 6) {
+        let rn = Math.floor(Math.random() * 45) + 1;
+        if(lottoNumbers.indexOf(rn) === -1) {
+          lottoNumbers.push(rn);
+          paintNumber(rn);
+        }
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      lottoNumbers.splice(0, 6);
+      numbers.innerHTML = '';
+    });
+  </script>
+</body>
+</html>

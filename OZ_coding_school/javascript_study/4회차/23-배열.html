@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열</title>
+</head>
+<body>
+  
+  <script>
+
+    /* *****배열
+      배열은 여러 개의 데이터를 보관하는 역할을 수행하는 객체이다.
+      배열을 사용하면 여러 개의 데이터를 대입할 수 있다.
+
+      let number = 3 // 숫자 한 개 대입
+      let numbers = [1, 2, 3]; // 배열을 이용해 숫자 세 개 대입
+
+      배열을 만드는 두 가지 방법
+      1. 배열리터럴로 생성
+      const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+
+      2. Array 생성자로 생성 - 배열을 만드는 데 사용하는 기본 내장 생성자가 존재
+      const arr = new Array(1, 2, 3, 4, 5, 6, 7, 8);
+
+      배열 객체를 다루기 위해 알아두어야 할 몇가지 특징
+      - 배열에 포함된 값 하나하나를 '배열 요소'라고 한다.
+      - 각 배열 요소는 왼쪽부터 순서(번호)가 매겨진다. 이를 '인덱스 번호'라 한다.
+      - 인덱스 번호는 0부터 시작한다.
+      - 배열 요소 수는 원하는 개수만큼 포함시킬 수 있으며 0개일 수도 있다.
+      - 다양한 유형의 데이터를 포함할 수 있다. 숫자, 문자열, 객체 등...
+
+      const ohMyGirl = ["효정", "미미", "유아", "승희", "지호", "유빈", "아린"]
+      console.log(ohMyGirl[0]) // 효정
+      console.log(ohMyGirl[2]) // 유아
+      console.log(ohMyGirl[5]) // 유빈
+      console.log(ohMyGirl[9]) // undefined
+
+      ohMyGirl[0] = "갓효정" // 원래 효정이었지만, 갓효정으로 변경!
+      console.log(ohMyGirl[0]) // 갓효정
+    */
+
+    /* *****배열 메소드 & 속성
+      배열은 객체이다.
+      push - 배열의 끝에 하나 이상의 요소를 추가하고 배열의 새로운 길이를 반환
+      unshift - 배열의 맨 앞쪽에 요소를 추가하고 배열의 새로운 길이를 반환
+      pop - 배열의 마지막 요소를 제거하고 그 요소를 반환
+      shift - 배열의 첫번째 요소를 제거하고 그 요소를 반환
+      indexOf - 배열에서 주어진 값과 일치하는 첫 번째 인덱스를 반환, 없으면 -1 반환
+      splice - 배열 요소를 원하는 위치에서 원하는 수만큼 추가/제거(배열을 직접 수정하므로 주의해서 사용)
+      forEach - 배열의 각각의 요소에 대해 콜백을 호출
+      length - 배열의 길이를 반환하는 속성
+    */
+
+    const vos = ["박지헌", "최현준", "김경록"];
+
+    console.log(vos); // ["박지헌", "최현준", "김경록"]
+    console.log(vos[0]) // 박지헌
+    console.log(vos[1]) // 최현준
+    console.log(vos[2]) // 김경록
+    console.log(vos[5]) // undefined
+
+    vos[0] = "지헌";
+    vos[1] = "현준";
+    vos[2] = "경록";
+
+    console.log(vos[0]) // 지헌
+    console.log(vos[1]) // 현준
+    console.log(vos[2]) // 경록
+
+    for(let i = 0; i < vos.length; i++) {
+      console.log(vos[i]);
+    }
+
+    vos.push("홍길동"); // 홍길동을 배열의 맨 마지막에 추가
+    console.log(vos); // ['지헌', '현준', '경록', '홍길동']
+
+    vos.pop(); // 배열의 맨 마지막을 제거
+    console.log(vos); // ['지헌', '현준', '경록']
+
+    // indexOf - 주어진 요소의 유무를 인덱스 번호로 확인
+    console.log( vos.indexOf("경록") ); // 2
+    console.log( vos.indexOf("홍길동") ); // -1(홍길동은 존재 하지 않기 때문에 -1을 반환)
+    
+    // splice - 정해진 위치에서부터 정해진 개수만큼 요소 제거
+    // vos.splice(0, 2); // 0번부터 2개
+    // console.log(vos); // ['경록']
+
+    // splice로 요소를 지운 다음 대체 값을 채우는 것도 가능하다
+    vos.splice(0, 3, "박지헌", "최현준", "김경록");
+    console.log(vos); // ['박지헌', '최현준', '김경록']
+
+    // forEach - 배열의 개별 요소에 대한 함수를 차례대로 호출
+    vos.forEach(function(item){
+      console.log("forEach에서 호출된 함수! " + item);
+      // forEach에서 호출된 함수! 박지헌
+      // forEach에서 호출된 함수! 최현준
+      // forEach에서 호출된 함수! 김경록
+    });
+
+  </script>
+
+</body>
+</html>

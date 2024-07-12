@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    #user-info {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px;
+      overflow: hidden;
+      background-color: #FFF;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px 0 rgba(0,0,0,0.25);
+      color: #FFF;
+    }
+    h1 {
+      padding: 0 20px;
+      font-size: 20px;
+      line-height: 56px;
+      text-align: center;
+      background: #3949AB;
+    }
+    p {
+      margin: 0;
+      padding: 0 28px;
+      font-size: 14px;
+      line-height: 36px;
+      border-top: 1px solid #e1e1e1;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="user-info">
+    <h1>내 정보</h1>
+    <div>
+      <p id="name"></p>
+      <p class="fruit"></p>
+      <p class="animal"></p>
+      <p class="hobby"></p>
+    </div>
+  </div>
+
+  <script>
+
+    let name = document.querySelector('#name');
+    let fruit = document.querySelector('.fruit');
+    let animal = document.querySelector('.animal');
+    let hobby = document.querySelector('.hobby');
+
+    let qName = prompt('당신의 이름은?');
+    let qFruit = prompt('좋아하는 과일은?');
+    let qAnimal = prompt('좋아하는 동물은?');
+    let qHobby = prompt('당신의 취미는?');
+
+    name.textContent = `- 저의 이름은 ${qName}입니다.`;
+    fruit.textContent = `- 좋아하는 과일은 ${qFruit}`;
+    animal.textContent = `- 저는 ${qAnimal} 좋아합니다.`;
+    hobby.textContent = `- 매일하는 취미는 ${qHobby} 입니다.`;
+
+  </script>
+
+</body>
+</html>

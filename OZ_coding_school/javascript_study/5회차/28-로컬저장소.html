@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로컬 저장소</title>
+</head>
+<body>
+
+  <p id="item">이봉주</p>
+  <button id="set">SET</button>
+  <button id="get">GET</button>
+  <button id="remove">REMOVE</button>
+  <button id="clear">CLEAR</button>
+  
+  <script>
+
+    /* *****localStorage
+      localStorage 속성은 현재 도메인의 로컬 저장소에 접근할 수 있게 해 준다.
+      로컬 저장소는 웹브라우저에서 각 도메인에 대해 할당해주는 저장 공간으로
+      여기에는 데이터를 영구적으로 보관할 수가 있다.
+      데이터 보관 시에는 데이터의 이름과 데이터의 실제 값을 각각 지정하며
+      이때 데이터 타입은 문자열 형태만 허용된다.
+    */
+
+    // localStorage 메소드(로컬스토리지의 데이터 이름은 중복될 수 없다)
+    // setItem("key", "value") - 키와 밸류를 전달받아 저장 (데이터 저장하기)
+    // gelItem("key") - 전달받은 키에 해당하는 밸류를 반환 (데이터 불러오기)
+    // removeItem("key") - 전달받은 키에 해당하는 데이터 삭제 (데이터 삭제하기)
+    // clear() - 모든 데이터 삭제 (모두삭제)
+
+    const item = document.getElementById('item');
+
+    const setBtn = document.getElementById('set');
+    setBtn.addEventListener('click', () => {
+      localStorage.setItem('마라토너', item.textContent);
+    });
+
+    const getBtn = document.getElementById('get');
+    getBtn.addEventListener('click', () => {
+      alert(localStorage.getItem('마라토너'));
+    });
+
+    const removeBtn = document.getElementById('remove');
+    removeBtn.addEventListener('click', () => {
+      localStorage.removeItem('마라토너');
+    })
+
+    const clearBtn = document.getElementById('clear');
+    clearBtn.addEventListener('click', () => {
+      localStorage.clear();
+    });
+
+    localStorage.setItem('커피', JSON.stringify({
+      name: "에티오피아",
+      taste: "산미"
+    }));
+
+  </script>
+
+</body>
+</html>

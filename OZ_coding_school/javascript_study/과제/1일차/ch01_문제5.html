@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 최대한 할당연산자를 활용해 문제를 풀어주세요
+        let result;
+        
+        // console.log()안에 코드를 작성해주세요
+        // 출력에 사용되는 변수명은 result입니다.
+        // 무게 : weight(75kg)
+        // 출력 요청 값 : 무게 + 5kg 
+        let weight = 75;
+        result = weight + 5;
+        console.log(`${result}kg`) // 80kg
+
+        // console.log()안에 코드를 작성해주세요
+        // 출력에 사용되는 변수명은 result입니다.
+        // 피자 : pizza(9조각)
+        // 출력 요청 값 : pizza를 4명이서 나누었을때 남는 조각의 수
+        let pizza = 9;
+        let person = 4;
+        result = pizza % person;
+        console.log(`남은 피자 : ${result}조각`) // 1
+
+        // console.log()안에 코드를 작성해주세요
+        // 출력에 사용되는 변수명은 result입니다.
+        // 반지름 : radius(3cm)
+        // 출력 요청 값 : radius * radius * 3.14
+        let radius = 3;
+        const pi = 3.14
+        result = radius * radius * pi;
+        console.log(result)
+
+        // console.log()안에 코드를 작성해주세요
+        // 출력에 사용되는 변수명은 result입니다.
+        // 체질량 지수 : mbi
+        // 키 : 178cm, 몸무게 : 75kg
+        // 출력 요청 값 : 몸무게 / (키 * 키) 
+        let m = 1.78 // 미터로 환산
+        let kg = 75
+        result = kg / (m ** 2);
+        console.log(`bmi : ${result}`) // 23.671253629592222
+    </script>
+</body>
+</html>

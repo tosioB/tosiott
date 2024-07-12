@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>타이머 메소드</title>
+</head>
+<body>
+
+  <p id="now"></p>
+  <button id="stop">멈춰!</button>
+  
+  <script>
+
+    /* *****setTimeout
+      정해진 시간이 지나고 나면 주어진 함수를 실행 해주는 타이머 메소드
+
+      setTimeout(실행할_함수, ms_단위의_시간)
+
+      1000ms 가 지나고 나면 함수를 실행한다!
+      setTimeout(function(){
+        console.log('실행!')
+      }, 1000)
+    */
+
+    /* --------------------------------------------------------------------------- */
+
+    /* *****setInterval
+      일정한 시간 간격에 따라 함수를 반복 실행할 수 있도록 해주는 타이머 메소드!
+
+      setInterval(반복_실행할_함수, ms_단위의_시간)
+
+      500ms 마다 함수를 반복 실행한다!
+      setInterval(function(){
+        console.log('반복실행!')
+      }, 500)
+    */
+
+    /* --------------------------------------------------------------------------- */
+
+    /* *****clearInterval
+      setInterval 메소드가 호출되어 반복 실행할 함수 타이머를 등록하면, 타이머는 0이 아닌 숫자를 반환한다.
+      숫자는 타이머의 ID를 의미하며, 이를 clearInterval 메소드에 전달하면
+      해당 타이머는 반복실행이 취소된다.
+
+      // 세팅된 타이머의 반환값(ID)를 변수에 저장
+      let timer;
+      timer = setInterval(function(){
+        console.log("반복실행!")
+      })
+
+      // 셋팅된 타이머를 멈춰주세요(취소해주세요)!
+      clearInterval(timer);
+    */
+    const button = document.getElementById('stop');
+
+    let timer;
+    timer = setInterval(() => {
+      const p = document.getElementById("now");
+
+      const now = new Date();
+
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1; // 월 단위는 0부터 시작하기 때문에 + 1 적용
+      let day = now.getDate();
+      let hour = now.getHours();
+      let min = now.getMinutes();
+      let sec = now.getSeconds();
+
+      p.textContent = `${year}/${month}/${day} ${hour}:${min}:${sec}`;
+    }, 1000);
+
+    button.addEventListener('click', () => {
+      clearInterval(timer);
+    })
+
+// 4. 1번에서 생성한 객체를 생성자 함수를 사용하여 생성하세요.
+function Car(brand, model, year) {
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+
+  // 5.myDreamCar 메소드를 추가해주세요.
+  this.myDreamCar = function(){
+    console.log(`제 드림카는  ${this.year} 년식 ${this.brand} 회사의 ${this.model}입니다.`)
+  }
+}
+
+// 6. 생성자 함수로 객체 생성
+const dreamCar1 = new Car('람보르기니', '우라칸', '2022');
+
+// 마침표 연산자로 메소드 호출하기
+dreamCar1.myDreamCar(); 
+
+  </script>
+
+</body>
+</html>

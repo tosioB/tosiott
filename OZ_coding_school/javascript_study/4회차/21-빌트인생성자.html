@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>빌트인 생성자</title>
+</head>
+<body>
+
+  <p id="now"></p>
+  
+  <script>
+
+    /* *****빌트인 생성자
+      자바스크립트는 개발자의 편의를 위해 유용한 기능을 제공하는
+      빌트인 생성자 또는 빌트인 객체를 지원한다.
+
+      - 빌트인 생성자: 자바스크립트에 내장된 생성자. 이를 이용해 객체를 생성할 수 있다.
+      - 빌트인 객체: 자바스크립트에= 내장된 객체. 이를 이용해 값이나 기능을 호출할 수 있다.
+    */
+
+    /* *****빌트인 생성자 Date
+      Date는 날짜와 시간을 처리하는 다양한 메소드가 정의된 빌트인 생성자
+      Date를 통한 객체 생성은 다음과 같은 형태로 이루어진다.
+    */
+
+    // 코드가 실행되는 시점의 날짜와 시간 정보를 담은 객체
+    // const now = new Date()
+
+    // 2008년 6월 10일의 날짜와 시간 정보를 담은 객체
+    // const then = new Date(2008, 5, 10)
+
+    // Date 객체끼리는 밀리초 단위로 연산된다.
+    // const interval = now - then
+    // console.log(interval) // 419184288514
+
+    // getFullYear - 연도를 뜻하는 숫자 값 반환
+    // getMonth - 월을 뜻하는 숫자 값 반환(0부터 시작하므로 1월이면 0 반환)
+    // getDate - 날짜를 뜻하는 숫자 값 반환
+    // getDay - 요일을 뜻하는 숫자 값 반환(0부터 시작하므로 일요일이면 0 반환)
+    // getHours - 시각 중 시간을 나타내는 숫자 반환
+    // getMinutes - 시각중 분을 나타내는 숫자 반환
+    // getSeconds - 시각 중 초를 나타내는 숫자 반환
+    // toLocaleString - 지역 날짜 및 시간 문자열 반환('2021/09/17 16:30:45' 이런식)
+
+    const p = document.getElementById("now");
+
+    const now = new Date();
+
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1; // 월 단위는 0부터 시작하기 때문에 + 1 적용
+    let day = now.getDate();
+    let hour = now.getHours();
+    let min = now.getMinutes();
+    let sec = now.getSeconds();
+
+    p.textContent = `${year}/${month}/${day} ${hour}:${min}:${sec}`;
+
+    // const then = new Date(1989, 5, 12, 12, 30, 45); // 년, 월, 일, 시, 분, 초
+    // 월 단위는 0부터 시작하기 때문에 5라고 작성해야 6월로 적용
+
+  </script>
+
+</body>
+</html>
