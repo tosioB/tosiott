@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="join.css">
+</head>
+<body>
+  
+  <div id="join">
+    <div class="join-wrap">
+      <form class="box">
+        <h1 class="title">회원가입</h1>
+        <ul>
+          <!-- id -->
+          <li class="box-with-buttons">
+            <span class="inp-box">
+              <input type="text" name="id" class="user-id" placeholder="아이디를 입력하세요." autocomplete="off" value="ds500033">
+            </span>
+            <button type="button" data-for="double-check-btn-id" disabled>중복확인</button>
+            <p class="guide-msg" data-for="guide-msg-id">영문+숫자 8~16자리</p>
+          </li>
+  
+          <!-- pw -->
+          <li>
+            <span class="inp-box">
+              <input type="password" name="pw" class="user-pw" placeholder="비밀번호를 입력하세요." value="ds123456@">
+            </span>
+            <p class="guide-msg" data-for="guide-msg-pw">숫자+영문+특수문자 (!,@,#,$,%,^,&,*)</p>
+          </li>
+  
+          <!-- re-pw -->
+          <li>
+            <span class="inp-box">
+              <input type="password" name="re-pw" class="user-re-pw" placeholder="비밀번호를 다시 입력하세요." disabed value="ds123456@">
+            </span>
+            <p class="guide-msg" data-for="guide-msg-re-pw"></p>
+          </li>
+  
+          <!-- nickname -->
+          <li class="box-with-buttons">
+            <span class="inp-box">
+              <input type="text" name="nick" class="user-nick" placeholder="닉네임을 입력하세요." autocomplete="off" value="토시오">
+            </span>
+            <button type="button" data-for="double-check-btn-nick" disabled>중복확인</button>
+            <p class="guide-msg" data-for="guide-msg-nick">영문, 한글 2~8자리</p>
+          </li>
+  
+          <!-- email -->
+          <li>
+            <span class="inp-box">
+              <input type="text" name="email" class="user-email" placeholder="이메일를 입력하세요." autocomplete="off" value="abcdefg@naver.com">
+            </span>
+            <p class="guide-msg" data-for="guide-msg-email"></p>
+          </li>
+  
+          <!-- phone -->
+          <li class="box-with-buttons">
+            <span class="inp-box">
+              <input type="number" name="phone" class="user-phone" placeholder="휴대폰번호를 입력하세요.('-' 빼고 입력)" autocomplete="off" value="01012345678">
+            </span>
+            <button type="button" data-for="cerf-request-phone" disabled>인증번호 요청</button>
+            <!-- <span class="inp-box">
+              <input type="number" name="cert-number" class="user-phone" placeholder="인증번호를 입력하세요." autocomplete="off" disabled>
+            </span>
+            <button type="button" data-for="cerf-check-number" disabled>인증번호 확인</button> -->
+          </li>
+        </ul>
+        <button type="submit" class="join-btn">회원가입</button>
+      </form>
+      <div class="member-box box">
+        <h2 class="title">멤버</h2>
+        <ul class="member-list">
+          <!-- <li>
+            <p>아이디: 어쩌구</p>
+            <p>닉네임: 어쩌구</p>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="join.js"></script>
+
+</body>
+</html>
