@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="number"/>
+  <input type="number"/>
+  <input type="number"/>
+  <input type="number"/>
+  <input type="number"/>
+  <input type="number"/>
+  <input type="number"/>
+  <input type="number"/>
+  <select>
+    <option value="plus">더하기</option>
+    <option value="minus">빼기</option>
+  </select>
+  <button type="button" id="btn">계산!</button>
+  
+  <script>
+
+
+    function add(values) {
+      let resultSum = 0;
+      values.forEach(function (value) {
+        resultSum += value;
+      });
+      return resultSum;
+    }
+
+    function minus(values) {
+      let resultSum = 0;
+      values.forEach(function (value) {
+        resultSum -= value;
+      });
+      return resultSum;
+    }
+
+    document.getElementById("btn").addEventListener("click", function () {
+      // 셀렉트 옵션 선언 - 옵션의 밸류값 찾기 - 밸류가 더하기or빼기일때 조건
+      // 버튼 이벤트가 발생했을 때, 셀렉트 옵션의 값을 확인하고 값이 더하기면 function add를 실행 아니면 minus를 실행
+      const values = [];
+      const condition = document.querySelector("select").value; // plus or minus
+      let excute;
+      switch (condition) {
+        case "minus":
+          excute = minus;
+          break;
+        case "plus":
+        default:
+          excute = add;
+          break;
+      }
+      
+      const inputNumbers = document.querySelectorAll("input[type=number]");
+      inputNumbers.forEach(function (inputNumber) {
+        const value = Number(inputNumber.value);
+        values.push(value);
+      });
+      console.log(excute(values));
+    });
+
+  </script>
+
+</body>
+</html>
