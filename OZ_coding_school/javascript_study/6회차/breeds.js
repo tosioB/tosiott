@@ -1,4 +1,4 @@
-const apiRandomDogs = "https://dog.ceo/api/breeds/image/random/42";
+const apiRandomDogs = "https://dog.ceo/api/breeds/image/random/3";
 const apiAllBreeds = "https://dog.ceo/api/breeds/list/all";
 const request1 = new XMLHttpRequest();
 const request2 = new XMLHttpRequest();
@@ -8,6 +8,7 @@ const main = document.getElementById("main");
 const input = document.getElementById("filter-text");
 const button = document.getElementById("filter-button");
 const select = document.getElementById("filter-select");
+const resetButton = document.getElementById("reset-button");
 const more = document.getElementById("more");
 const tothetop = document.getElementById("tothetop");
 
@@ -28,7 +29,6 @@ window.addEventListener('load', () => {
   request1.open("get",  apiRandomDogs);
   request1.addEventListener('load', () => {
     const response = JSON.parse(request1.response);
-
     response.message.forEach((item) => {
       currentDogs.push(item);
       displayDogs(item);
@@ -78,15 +78,24 @@ select.addEventListener('change', () => {
   });
 });
 
-more.addEventListener('click', () => {
+resetButton.addEventListener('click', () => {
+  main.innerHTML = '';
   request1.open('get', apiRandomDogs);
-
   request1.addEventListener('load', () => {
     const response = JSON.parse(request1.response);
-
     response.message.forEach((item) => {
       currentDogs.push(item);
-      displayDogs(item);
+    })
+  })
+  request1.send();
+})
+
+more.addEventListener('click', () => {
+  request1.open('get', apiRandomDogs);
+  request1.addEventListener('load', () => {
+    const response = JSON.parse(request1.response);
+    response.message.forEach((item) => {
+      currentDogs.push(item);
     })
   })
   request1.send();
@@ -94,5 +103,5 @@ more.addEventListener('click', () => {
 
 tothetop.addEventListener('click', () => {
   // scrollTo() - 주어진 위치로 스크롤을 이동한다.
-  window.scrollTo({top : 0});
+  window.scrollTo({top : 0})
 });
