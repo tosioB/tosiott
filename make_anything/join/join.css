@@ -18,6 +18,15 @@ html, body {
 ul, ol {
   list-style: none;
 }
+::-webkit-scrollbar {
+  width: 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(0,0,0,0.2);
+}
 /* -------------------------------------------------------------- */
 input[type="text"],
 input[type="password"],
@@ -59,55 +68,18 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-/* input[type='date'] {
-  background: no-repeat right 4px top 50% / 20px;
-  background-image: url(images/calendar.svg);
-  position: relative;
-}
-input[type='date']:focus {
-  background-image: url(images/calendar_focus.svg);
-}
-input[type='date']::-webkit-calendar-picker-indicator {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  color: transparent;
-  cursor: pointer;
-}
-input[type="date"]::before {
-  content: attr(placeholder);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0 12px;
-  line-height: 40px;
-  background-color: var(--white-color);
-  color: #AEAEAE;
-  text-align: left;
-} */
-
 /* -------------------------------------------------------------- */
 #join {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
   height: 100%;
   background-color: var(--white-color);
 }
 #join .join-wrap {
   display: flex;
+  justify-content: center;
   gap: 20px;
-  justify-content: space-between;
-  width: 100%;
   max-width: 1000px;
-  padding: 20px;
+  padding: 10vh 20px;
+  margin: 0 auto;
 }
 #join .join-wrap .box {
   width: calc(50% - 15px);
@@ -182,6 +154,7 @@ input[type="date"]::before {
   background-color: var(--sub-color);
   border: 1px solid var(--main-color);
   border-radius: 8px;
+  position: relative;
 }
 #join .member-box ul li:first-child {
   margin-top: 0;
@@ -199,4 +172,17 @@ input[type="date"]::before {
   width: 4px;
   height: 4px;
   background-color: var(--main-color);
+}
+#join .member-box ul li .del-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  height: 24px;
+  padding: 0 8px;
+  font-size: 10px;
+  background-color: var(--red-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--white-color);
+  cursor: pointer;
 }
