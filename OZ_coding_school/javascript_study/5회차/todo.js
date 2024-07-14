@@ -87,7 +87,6 @@ todoForm.addEventListener('submit', (e) => {
   
   todoArr.push(toBeAdded);
   todoForm.todo.value = '';
-  console.log(todoArr);
   displayTodos();
   saveTodos();
 })
