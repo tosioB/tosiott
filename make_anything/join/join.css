@@ -62,11 +62,22 @@ input[type="date"]:disabled,
 input[type="number"]:disabled {
   background-color: #e1e1e1;
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+select {
+  width: 100px;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 14px;
+  background-color: var(--white-color);
+  border: 1px solid var(--gray-color);
+  border-radius: 4px;
+}
+select option {
+  padding: 20px;
 }
 /* -------------------------------------------------------------- */
 #join {
@@ -106,6 +117,10 @@ input::-webkit-inner-spin-button {
   flex-wrap: wrap;
   gap: 4px 8px;
 }
+#join form ul > li.column {
+  align-items: flex-start;
+  flex-direction: column;
+}
 #join form ul > li .inp-box {
   width: 100%;
   position: relative;
@@ -135,6 +150,9 @@ input::-webkit-inner-spin-button {
   background: url('images/checked.svg') no-repeat 0% 50% / 16px;
   color: var(--main-color);
 }
+#join form ul > li .cerf-request-phone {
+  width: 100%;
+}
 #join form .cerf-count {
   display: none;
   position: absolute;
@@ -142,6 +160,38 @@ input::-webkit-inner-spin-button {
   top: 50%;
   transform: translateY(-50%);
   font-size: 12px;
+}
+#join form .chk-box input[type="checkbox"] {
+  display: none;
+}
+#join form .chk-box input[type="checkbox"] + label {
+  display: block;
+  padding-left: 24px;
+  font-size: 12px;
+  line-height: 24px;
+  position: relative;
+  cursor: pointer;
+}
+#join form .chk-box input[type="checkbox"] + label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: no-repeat 50% 50%;
+  background-image: url(images/checkbox_unchecked.svg);
+}
+#join form .chk-box input[type="checkbox"]:checked + label::before {
+  background-image: url(images/checkbox_checked.svg);
+}
+#join form .chk-box.all-check {
+  margin-bottom: 8px;
+}
+#join form .chk-box.all-check input[type="checkbox"] + label {
+  font-size: 16px;
+  font-weight: 700;
 }
 #join form .join-btn {
   width: 100%;

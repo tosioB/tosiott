@@ -26,13 +26,14 @@ let isTrueNick = false;
 let isTrueEmail = false;
 let isTruePhone = false;
 let isTruePhoneCerf = false;
+let isTrueTermsService = false;
+let isTrueTermsPrivacy = false;
 
-// ------------------------------유효성검사 - id--------------------------------- //
-
+// ------------------------------------------------------------------------------------------------ //
 const doubleCheckBtnId = document.querySelector('.double-check-btn-id');
 const guideMsgId = document.querySelector('.guide-msg-id');
 
-const IdCheck = () => {
+const idCheck = () => { // 아이디 유효성 검사
   const userIdValue = userId.value.trim();
   const regexId = /^(?!^[0-9])[a-zA-Z0-9]{8,16}$/; // 영문+숫자 8~16자 정규식
 
@@ -48,8 +49,7 @@ const IdCheck = () => {
 
   userInfo.id = userIdValue;
 }
-
-function handleIdDoubleCheck(){
+function handleIdDoubleCheck(){ // 아이디 중복확인
   const memberIdFinded = members.findIndex((joinMember) => {
     return joinMember.id === userId.value;
   })
@@ -65,12 +65,9 @@ function handleIdDoubleCheck(){
     alert('사용 가능한 아이디입니다.')
   }
 }
-// --------------------------------------------------------------- //
 
-
-
-// ------------------------------유효성검사 - pw--------------------------------- //
-const PwCheck = () => {
+// ------------------------------------------------------------------------------------------------ //
+const pwCheck = () => { // 비밀번호 유효성 검사
   const userPwValue = userPw.value.trim();
   const guideMsgPw = document.querySelector('.guide-msg-pw');
   const regexPw = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[\!\@\#\$\%\^\&\*]).*/; // 숫자+영문+특수문자(!,@,#,$,%,^,&,*) 정규식
@@ -87,12 +84,10 @@ const PwCheck = () => {
 
   userInfo.pw = userPwValue;
 }
-// --------------------------------------------------------------- //
 
 
-
-// ------------------------------유효성검사 - re-pw--------------------------------- //
-const RePwCheck = () => {
+// ------------------------------------------------------------------------------------------------ //
+const rePwCheck = () => { // 비밀번호 확인
   const userRePwValue = userRePw.value.trim();
   const guideMsgRePw = document.querySelector('.guide-msg-re-pw');
   
@@ -108,15 +103,13 @@ const RePwCheck = () => {
 
   userInfo.rePw = userRePwValue;
 }
-// --------------------------------------------------------------- //
 
 
-
-// ------------------------------유효성검사 - re-pw--------------------------------- //
+// ------------------------------------------------------------------------------------------------ //
 const doubleCheckBtnNick = document.querySelector('.double-check-btn-nick');
 const guideMsgNick = document.querySelector('.guide-msg-nick');
 
-const NickCheck = () => {
+const nickCheck = () => { // 닉네임 유효성 검사
   const userNickValue = userNick.value.trim();
   const regexNick = /^[a-zA-Z0-9가-힣]{2,8}$/; // 영문 또는 한글 4~8자리
 
@@ -132,8 +125,7 @@ const NickCheck = () => {
 
   userInfo.nick = userNickValue;
 }
-
-function handleNickDoubleCheck(){
+function handleNickDoubleCheck(){ // 닉네임 중복확인
   const memberNickFinded = members.findIndex((joinMember) => {
     return joinMember.nick === userNick.value;
   })
@@ -149,11 +141,10 @@ function handleNickDoubleCheck(){
     alert('사용 가능한 닉네임입니다.')
   }
 }
-// --------------------------------------------------------------- //
 
 
-// ------------------------------유효성검사 - email--------------------------------- //
-const EmailCheck = () => {
+// ------------------------------------------------------------------------------------------------ //
+const emailCheck = () => { // 이메일 유효성 검사
   const userEmailValue = userEmail.value.trim();
   const guideMsgEmail = document.querySelector('.guide-msg-email');
   const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // 이메일 정규식
@@ -171,14 +162,14 @@ const EmailCheck = () => {
 
   userInfo.email = userEmailValue;
 }
-// --------------------------------------------------------------- //
 
 
-// ------------------------------유효성검사 - id--------------------------------- //
+// ------------------------------------------------------------------------------------------------ //
 const cerfRequestBtn = document.querySelector('.cerf-request-phone');
+const cerfCheckNumber = document.querySelector('.cerf-check-number');
 const cerfCount = document.querySelector('.cerf-count');
 
-const PhoneCheck = () => {
+const phoneCheck = () => { // 휴대폰번호 유효성 검사
   const userPhoneValue = userPhone.value.trim();
   const regexPhone = /^\d{3}\d{3,4}\d{4}$/;
 
@@ -194,33 +185,110 @@ const PhoneCheck = () => {
 
   userInfo.phone = userPhoneValue;
 }
+const phoneCerfCheck = () => { // 인증번호 6자리 제한
+  let userPhoneCerfValue = userPhoneCerf.value.trim();
 
-// let startTime = 0; // 타이머 시작 시간
-// cerfCountTimer = setInterval(() => {
-//   // console.log(new Date().getTime())
-// }, 1000);
+  if (userPhoneCerfValue.length > 6) {
+    userPhoneCerf.value = userPhoneCerfValue.slice(0, 6);
+    alert('인증번호는 6자리까지 입력 가능합니다.');
+  }
+}
 
-// cerfRequestBtn.addEventListener('click', () => {
-//   userPhoneCerf.disabled = false;
-//   cerfCount.style.display = 'block';
-// }, 1000)
+// 인증번호 요청
+let startTimer = 180;
+let minutes = Math.floor(startTimer / 60);
+let seconds = startTimer % 60;
+let timer;
+const cerfCountTimer = () => { // 타이머 함수
+  // 현재 시간을 "mm:ss" 형식으로 표시
+  let displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  let displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+  // console.log(`${displayMinutes}:${displaySeconds}`)
+  cerfCount.textContent = `${displayMinutes}:${displaySeconds}`
+
+  startTimer--; // 시간을 1초씩 감소
+
+  // 분과 초를 다시 계산
+  minutes = Math.floor(startTimer / 60);
+  seconds = startTimer % 60;
+
+  // 시간이 0이 되면 종료
+  if(startTimer < 0) {
+    clearInterval(timer);
+    userPhoneCerf.disabled = true;
+    cerfCount.style.display = 'none';
+    startTimer = 180;
+    alert('인증번호 요청을 다시 해주세요.')
+    minutes = Math.floor(startTimer / 60);
+    seconds = startTimer % 60;
+  }
+}
+
+// 인증번호 요청시 인증번호 입력창/확인버튼 활성화 & 타이머 동작
+cerfRequestBtn.addEventListener('click', () => {
+  isTruePhoneCerf = true;
+  userPhoneCerf.disabled = false;
+  cerfCheckNumber.disabled = false;
+  cerfCount.style.display = 'block';
+  userPhoneCerf.focus();
+  timer = setInterval(cerfCountTimer, 1000);
+}, 1000);
 
 
-// --------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------ //
+const allCheck = document.querySelector('#all-check'); // 전체 동의 체크박스
+const termsService = document.querySelector('#terms-service');
+const termsPrivacy = document.querySelector('#terms-privacy');
+const termsCheck = document.querySelectorAll('.terms-check'); // 약관 동의 체크박스들
 
-userId.addEventListener('input', () => {IdCheck()}); // id 입력 이벤트
-userPw.addEventListener('input', () => {PwCheck()}); // pw 입력 이벤트
-userRePw.addEventListener('input', () => {RePwCheck()}); // re-pw 입력 이벤트
-userNick.addEventListener('input', () => {NickCheck()}); // nickname 입력 이벤트
-userEmail.addEventListener('input', () => {EmailCheck()}); // email 입력 이벤트
-userPhone.addEventListener('input', () => {PhoneCheck()}); // phone 입력 이벤트
+termsCheck.forEach((checkbox) => { // 개별 체크박스 이벤트
+  checkbox.addEventListener('change', () => {updateAllCheck()});
+});
+
+function updateAllCheck(){ // 개별 체크박스중 단 한개라도 unchecked가 되면 전체 체크박스는 unchecked가 됨
+  // Array.from() - 유사 배열 객체나 반복 가능한 객체를 배열로 반환
+  const termsCheckArray = Array.from(termsCheck);
+
+  // every() - 배열의 모든 요소가 주어진 조건을 만족할 때 true를 반환 / 조건이 하나라도 만족하지 않을 때 false를 반환
+  const termsCheckEvery = termsCheckArray.every((item) => {
+    return item.checked; // termsCheck가 전부 checked인지 여부 묻기
+  });
+
+  allCheck.checked = termsCheckEvery; // termsCheckEvery가 true를 반환할 경우 allcheck도 true로 변경 
+}
+
+allCheck.addEventListener('change', () => {
+  let isAllCheck = allCheck.checked;
+    termsCheck.forEach((checkbox) => {
+      checkbox.checked = isAllCheck;
+    });
+});
+
+termsService.addEventListener('change', (e) => { // [필수]이용약관
+  isTrueTermsService = e.target.checked
+});
+
+termsPrivacy.addEventListener('change', (e) => { // [필수]개인정보 수집 및 이용
+  isTrueTermsPrivacy = e.target.checked
+});
+
+
+// ------------------------------------------------------------------------------------------------ //
+userId.addEventListener('input', () => {idCheck()}); // id 입력 이벤트
+userPw.addEventListener('input', () => {pwCheck()}); // pw 입력 이벤트
+userRePw.addEventListener('input', () => {rePwCheck()}); // re-pw 입력 이벤트
+userNick.addEventListener('input', () => {nickCheck()}); // nickname 입력 이벤트
+userEmail.addEventListener('input', () => {emailCheck()}); // email 입력 이벤트
+userPhone.addEventListener('input', () => {phoneCheck()}); // phone 입력 이벤트
+userPhoneCerf.addEventListener('input', () => {phoneCerfCheck()}); // phone 인증번호 입력 이벤트
+
 doubleCheckBtnId.addEventListener('click', () => {handleIdDoubleCheck()}); // id 중복확인 이벤트
 doubleCheckBtnNick.addEventListener('click', () => {handleNickDoubleCheck()}); // nickname 중복확인 이벤트
 
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
-  // e.preventDefault();
-  if (isTrueId && isTruePw && isTrueRePw && isTrueNick && isTrueEmail && isTruePhone) {
+  e.preventDefault();
+  if (isTrueId && isTruePw && isTrueRePw && isTrueNick && isTrueEmail && isTruePhone && isTruePhoneCerf && isTrueTermsService && isTrueTermsPrivacy) {
     members.push({ // 새로운 멤버 객체
       id: userInfo.id,
       pw: userInfo.pw,
@@ -234,6 +302,15 @@ form.addEventListener('submit', (e) => {
     localStorage.setItem('members', membersJSON); // JSON으로 변환한 새로운 멤버를 로컬스토리지에 저장
   } else {
     alert('회원가입불가');
+    // console.log(`isTrueId(아이디) : ${isTrueId}`);
+    // console.log(`isTruePw(비밀번호) : ${isTruePw}`);
+    // console.log(`isTrueRePw(비밀번호 확인) : ${isTrueRePw}`);
+    // console.log(`isTrueNick(닉네임) : ${isTrueNick}`);
+    // console.log(`isTrueEmail(이메일) : ${isTrueEmail}`);
+    // console.log(`isTruePhone(휴대폰번호) : ${isTruePhone}`);
+    // console.log(`isTruePhoneCerf(인증번호) : ${isTruePhoneCerf}`);
+    // console.log(`isTrueTermsService)(이용약관동의) : ${isTrueTermsService}`);
+    // console.log(`isTrueTermsPrivacy)(개인정보 수집 동의) : ${isTrueTermsPrivacy}`);
   }
   init();
 });

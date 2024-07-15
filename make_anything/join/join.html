@@ -57,15 +57,47 @@
   
           <!-- phone -->
           <li class="box-with-buttons">
+            <select>
+              <option value="SKT" selected>SKT</option>
+              <option value="KT">KT</option>
+              <option value="LGU+">LGU+</option>
+              <option value="thrifty-SKT">알뜰폰 SKT</option>
+              <option value="thrifty-KT">알뜰폰 KT</option>
+              <option value="thrifty-LGU+">알뜰폰 LGU+</option>
+            </select>
             <span class="inp-box">
               <input type="number" name="phone" class="user-phone" placeholder="휴대폰번호를 입력하세요.('-' 빼고 입력)" autocomplete="off">
             </span>
             <button type="button" class="cerf-request-phone" disabled>인증번호 요청</button>
             <span class="inp-box">
               <input type="number" name="cert-number" class="user-phone-cerf" placeholder="인증번호를 입력하세요." autocomplete="off" disabled>
-              <span class="cerf-count">00:00</span>
+              <span class="cerf-count">03:00</span>
             </span>
             <button type="button" class="cerf-check-number" disabled>인증번호 확인</button>
+          </li>
+
+          <!-- 약관동의 -->
+          <li class="column">
+            <span class="chk-box all-check">
+              <input type="checkbox" id="all-check">
+              <label for="all-check">전체동의</label>
+            </span>
+            <span class="chk-box">
+              <input type="checkbox" id="terms-service" class="terms-check">
+              <label for="terms-service"><span class="essential">[필수]</span>이용약관</label>
+            </span>
+            <span class="chk-box">
+              <input type="checkbox" id="terms-privacy" class="terms-check">
+              <label for="terms-privacy"><span class="essential">[필수]</span>개인정보 수집 및 이용</label>
+            </span>
+            <span class="chk-box">
+              <input type="checkbox" id="terms-realname" class="terms-check">
+              <label for="terms-realname"><span class="select">[선택]</span>실명 인증된 아이디로 가입</label>
+            </span>
+            <span class="chk-box">
+              <input type="checkbox" id="terms-location" class="terms-check">
+              <label for="terms-location"><span class="select">[선택]</span>위치기반서비스 이용약관</label>
+            </span>
           </li>
         </ul>
         <button type="submit" class="join-btn">회원가입</button>
