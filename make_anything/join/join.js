@@ -16,6 +16,7 @@ const userRePw = document.querySelector('.user-re-pw');
 const userNick = document.querySelector('.user-nick');
 const userEmail = document.querySelector('.user-email');
 const userPhone = document.querySelector('.user-phone');
+const userPhoneCerf = document.querySelector('.user-phone-cerf');
 
 // 유효성 검사 결과
 let isTrueId = false;
@@ -24,6 +25,7 @@ let isTrueRePw = false;
 let isTrueNick = false;
 let isTrueEmail = false;
 let isTruePhone = false;
+let isTruePhoneCerf = false;
 
 // ------------------------------유효성검사 - id--------------------------------- //
 
@@ -173,10 +175,12 @@ const EmailCheck = () => {
 
 
 // ------------------------------유효성검사 - id--------------------------------- //
+const cerfRequestBtn = document.querySelector('.cerf-request-phone');
+const cerfCount = document.querySelector('.cerf-count');
+
 const PhoneCheck = () => {
   const userPhoneValue = userPhone.value.trim();
   const regexPhone = /^\d{3}\d{3,4}\d{4}$/;
-  const cerfRequestBtn = document.querySelector('.cerf-request-phone');
 
   if (regexPhone.test(userPhoneValue)) {
     isTruePhone = true;
@@ -184,10 +188,24 @@ const PhoneCheck = () => {
   } else {
     isTruePhone = false;
     cerfRequestBtn.disabled = true;
+    userPhoneCerf.disabled = true;
+    cerfCount.style.display = 'none';
   }
 
   userInfo.phone = userPhoneValue;
 }
+
+// let startTime = 0; // 타이머 시작 시간
+// cerfCountTimer = setInterval(() => {
+//   // console.log(new Date().getTime())
+// }, 1000);
+
+// cerfRequestBtn.addEventListener('click', () => {
+//   userPhoneCerf.disabled = false;
+//   cerfCount.style.display = 'block';
+// }, 1000)
+
+
 // --------------------------------------------------------------- //
 
 userId.addEventListener('input', () => {IdCheck()}); // id 입력 이벤트

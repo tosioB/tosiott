@@ -93,6 +93,8 @@ input::-webkit-inner-spin-button {
   margin-bottom: 20px;
   font-size: 20px;
 }
+
+/* form */
 #join form ul {
   display: flex;
   flex-direction: column;
@@ -106,6 +108,7 @@ input::-webkit-inner-spin-button {
 }
 #join form ul > li .inp-box {
   width: 100%;
+  position: relative;
 }
 #join form ul > li.box-with-buttons .inp-box {
   width: calc(100% - 108px);
@@ -132,6 +135,14 @@ input::-webkit-inner-spin-button {
   background: url('images/checked.svg') no-repeat 0% 50% / 16px;
   color: var(--main-color);
 }
+#join form .cerf-count {
+  display: none;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
 #join form .join-btn {
   width: 100%;
   height: 40px;
@@ -142,8 +153,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-
-
+/* member-box */
 #join .member-box ul li {
   display: flex;
   flex-direction: column;
