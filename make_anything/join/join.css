@@ -56,8 +56,6 @@ input[type="number"]::placeholder {
   font-size: 12px;
   color: #AEAEAE;
 }
-/* 테스트 */
-/* 테스트2 */
 input[type="text"]:disabled,
 input[type="password"]:disabled,
 input[type="date"]:disabled,
