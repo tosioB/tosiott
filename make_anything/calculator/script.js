@@ -1,4 +1,4 @@
-let result = document.querySelector('.result');
+let display = document.querySelector('.display');
 let buttons = document.querySelectorAll('.button');
 
 let firstOperand; // 첫번째 반환값
@@ -8,7 +8,7 @@ let operator; // 연산자
 function calculate(a,b,c) {
   value = eval(a+b+c);
   firstOperand = value;
-  result.textContent = value;
+  display.textContent = value;
 }
 
 buttons.forEach((button) => {
@@ -19,38 +19,38 @@ buttons.forEach((button) => {
 
     if (numberClasses) { // number button click
       if (firstOperand) {
-        if (result.textContent === firstOperand) {
-          result.textContent = btnValue;
+        if (display.textContent === firstOperand) {
+          display.textContent = btnValue;
         } else {
-          result.textContent += btnValue;
+          display.textContent += btnValue;
         }
       } else {
-        if (result.textContent === '0') {
-          result.textContent = btnValue;
+        if (display.textContent === '0') {
+          display.textContent = btnValue;
         } else {
-          result.textContent += btnValue;
+          display.textContent += btnValue;
         }
       }
     }
 
     if (operatorClasses) { // operator button click
-      firstOperand = result.textContent;
+      firstOperand = display.textContent;
       operator = btnValue;
     }
 
     switch(btnValue) {
       case '=':
-        secondOperand = result.textContent;
+        secondOperand = display.textContent;
         calculate (firstOperand, operator, secondOperand);
         break;
       case 'C':
-        result.innerHTML = '0';
+        display.innerHTML = '0';
         firstOperand = false;
         secondOperand = false;
         break;
       case '.':
-        if (!result.textContent.includes('.')) {
-          result.textContent += btnValue;
+        if (!display.textContent.includes('.')) {
+          display.textContent += btnValue;
         }
         break;
     }
@@ -99,18 +99,18 @@ buttons.forEach((button) => {
 //     if (operator) {
 //       if (secondOperand) {
 //         secondOperand += btnValue;
-//         result.textContent = secondOperand;
+//         display.textContent = secondOperand;
 //       } else {
 //         secondOperand = btnValue;
-//         result.textContent = secondOperand;
+//         display.textContent = secondOperand;
 //       }
 //     } else {
 //       if (firstOperand) {
 //         firstOperand += btnValue;
-//         result.textContent = firstOperand;
+//         display.textContent = firstOperand;
 //       } else {
 //         firstOperand = btnValue;
-//         result.textContent = firstOperand;
+//         display.textContent = firstOperand;
 //       }
 //     }
 //     console.log(`첫번째 : ${firstOperand}`)
