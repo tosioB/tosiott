@@ -3,8 +3,26 @@
   margin: 0;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(0,0,0,0.2);
+}
+@font-face {
+  font-family: 'Ownglyph_ryuttung-Rg';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-2@1.0/Ownglyph_ryuttung-Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 html, body {
   height: 100%;
+}
+ul, ol {
+  list-style: none;
 }
 .container {
   display: flex;
@@ -12,9 +30,131 @@ html, body {
   justify-content: center;
   height: 100%;
 }
-.todo-list-wrap .inp-box {
-  
+.notebook {
+  width: 600px;
+  height: 759px;
+  background: url(images/bg.png) no-repeat 50% 0% / 100%;
+  box-shadow: 16px 16px 20px rgba(0,0,0,0.2);
 }
-.todo-list-wrap .todo-list {
+/* memo */
+.notebook .memo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.notebook .memo textarea {
+  width: 100%;
+  height: 40px;
+  border: none;
+  resize: none;
+}
+.notebook .memo .add-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.notebook .main-title {
+  margin-top: 74px;
+  margin-left: 20px;
+  font-family: 'Ownglyph_ryuttung-Rg';
+  font-size: 36px;
+  font-weight: 700;
+}
 
+/* memo-list */
+.notebook .memo-list {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  column-gap: 24px;
+  row-gap: 16px;
+  height: 600px;
+  padding: 8px 20px;
+  margin-top: 12px;
+  overflow: auto;
+}
+.notebook .memo-list .note-paper {
+  position: relative;
+}
+.notebook .memo-list .note-paper input[type="checkbox"] {
+  display: none;
+}
+.notebook .memo-list .note-paper label {
+  display: block;
+  width: 170px;
+  height: 170px;
+  padding: 12px;
+  box-shadow: 8px 8px 8px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+.notebook .memo-list .note-paper label .title {
+  display: block;
+  width: 100%;
+  font-family: 'Ownglyph_ryuttung-Rg';
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notebook .memo-list .note-paper .memo-box .write-memo {
+  display: none;
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+  margin-top: 8px;
+  font-family: 'Ownglyph_ryuttung-Rg';
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #FFF;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 8px;
+  resize: none;
+}
+.notebook .memo-list .note-paper .memo-box .write-memo:focus {
+  outline: none;
+}
+.notebook .memo-list .note-paper .memo-box .read-memo {
+  display: -webkit-box;
+  height: 100px;
+  margin-top: 8px;
+  font-family: 'Ownglyph_ryuttung-Rg';
+  font-size: 16px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+.notebook .memo-list .note-paper .btn-box {
+  display: flex;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+}
+.notebook .memo-list .note-paper .btn-box button {
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  background: no-repeat 50% 50% / 16px;
+  border: none;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+.notebook .memo-list .note-paper .btn-box button:hover {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.notebook .memo-list .note-paper .btn-box button.save-btn {
+  background-image: url(images/save.svg);
+}
+.notebook .memo-list .note-paper .btn-box button.edit-btn {
+  background-image: url(images/edit.svg);
+}
+.notebook .memo-list .note-paper .btn-box button.del-btn {
+  background-image: url(images/del.svg);
 }
