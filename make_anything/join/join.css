@@ -57,6 +57,7 @@ input[type="number"]::placeholder {
   color: #AEAEAE;
 }
 /* 테스트 */
+/* 테스트2 */
 input[type="text"]:disabled,
 input[type="password"]:disabled,
 input[type="date"]:disabled,
