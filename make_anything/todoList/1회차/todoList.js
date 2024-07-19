@@ -13,8 +13,6 @@ const pastelColors = [
   'rgb(152, 251, 152)'   // 연한 연두색
 ];
 
-let list = document.querySelectorAll('.note-paper');
-
 // 랜덤 파스텔톤 RGB 색상을 생성하는 함수
 function getRandomPastelColor() {
   let randomIndex = Math.floor(Math.random() * pastelColors.length); // 0부터 배열 길이 - 1 사이의 랜덤 정수
@@ -23,21 +21,36 @@ function getRandomPastelColor() {
 
  // 랜덤 각도 생성 함수
 function getRandomRotation(min, max) {
-  // return Math.random() * (max - min) + min;
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// 각 리스트 요소에 대해 랜덤 파스텔톤 색상 적용
-list.forEach(function(item) {
-  item.style.backgroundColor = getRandomPastelColor(); // getRandomPastelColor 함수는 아래에 정의됩니다
+const notePaper = document.querySelectorAll('.note-paper');
+notePaper.forEach((memo) => {
+  const paper = memo.querySelector('.paper');
+
+  paper.style.backgroundColor = getRandomPastelColor(); // getRandomPastelColor 함수는 아래에 정의됩니다
 
   var randomRotation = getRandomRotation(-5, 5);
-  item.style.transform = 'rotate(' + randomRotation + 'deg)';
-});
+  paper.style.transform = 'rotate(' + randomRotation + 'deg)';
 
-const writeMemo = document.querySelectorAll('.write-memo');
-writeMemo.forEach((write) => {
-  let writeValue = write.value;
-  let readMemo = write.previousElementSibling;
-  readMemo.innerHTML = writeValue
-})
+  const readMemo = memo.querySelector('.read-memo');
+  const closeBtn = memo.querySelector('.close-btn');
+  const blackBg = document.querySelector('.black-bg');
+  readMemo.addEventListener('click', () => {
+    paper.classList.add('active');
+    blackBg.style.display = 'block';
+    closeBtn.style.visibility = 'visible';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    paper.classList.remove('active');
+    blackBg.style.display = 'none';
+    closeBtn.style.visibility = 'hidden';
+  });
+
+  blackBg.addEventListener('click', () => {
+    paper.classList.remove('active');
+    blackBg.style.display = 'none';
+    closeBtn.style.visibility = 'hidden';
+  });
+});

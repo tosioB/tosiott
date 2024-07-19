@@ -1,3 +1,6 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -12,17 +15,20 @@
 ::-webkit-scrollbar-track {
   background-color: rgba(0,0,0,0.2);
 }
-@font-face {
-  font-family: 'Ownglyph_ryuttung-Rg';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-2@1.0/Ownglyph_ryuttung-Rg.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
 html, body {
   height: 100%;
+  /* font-family: "Nanum Pen Script", cursive; */
+  /* font-family: "Nanum Pen Script", cursive; */
+  font-family: "Hi Melody", sans-serif;
+  letter-spacing: -0.6px;
 }
 ul, ol {
   list-style: none;
+}
+.center-sort {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .container {
   display: flex;
@@ -57,7 +63,7 @@ ul, ol {
 .notebook .main-title {
   margin-top: 74px;
   margin-left: 20px;
-  font-family: 'Ownglyph_ryuttung-Rg';
+  
   font-size: 36px;
   font-weight: 700;
 }
@@ -76,23 +82,46 @@ ul, ol {
   overflow: auto;
 }
 .notebook .memo-list .note-paper {
+  width: 170px;
+  height: 170px;
   position: relative;
 }
-.notebook .memo-list .note-paper input[type="checkbox"] {
-  display: none;
-}
-.notebook .memo-list .note-paper label {
+.notebook .memo-list .note-paper .paper {
+  position: relative;
+  left: 0;
+  top: 0;
   display: block;
   width: 170px;
   height: 170px;
   padding: 12px;
   box-shadow: 8px 8px 8px rgba(0,0,0,0.25);
+}
+.notebook .memo-list .note-paper .paper.active {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(2) !important;
+  z-index: 2;
+}
+.notebook .memo-list .note-paper input[type="checkbox"] {
+  display: none;
+}
+.notebook .memo-list .note-paper label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
   cursor: pointer;
+}
+.notebook .memo-list .note-paper label:hover {
+  text-decoration: underline;
+}
+.notebook .memo-list .note-paper label .date {
+  font-size: 14px;
+  font-weight: 700;
 }
 .notebook .memo-list .note-paper label .title {
   display: block;
-  width: 100%;
-  font-family: 'Ownglyph_ryuttung-Rg';
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
@@ -100,40 +129,42 @@ ul, ol {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.notebook .memo-list .note-paper .memo-box .write-memo {
-  display: none;
-  width: 100%;
-  height: 100px;
-  padding: 8px;
-  margin-top: 8px;
-  font-family: 'Ownglyph_ryuttung-Rg';
-  font-size: 16px;
-  line-height: 20px;
-  background-color: #FFF;
-  border: 1px solid rgba(0,0,0,0.3);
-  border-radius: 8px;
-  resize: none;
+.notebook .memo-list .note-paper label .check-icon {
+  display: block;
+  width: 14px;
+  min-width: 14px;
+  height: 14px;
+  background: no-repeat 50% 50% / 14px;
+  background-image: url(images/uncheck.svg);
 }
-.notebook .memo-list .note-paper .memo-box .write-memo:focus {
-  outline: none;
+.notebook .memo-list .note-paper input[type="checkbox"]:checked+label .check-icon {
+  background-image: url(images/check.svg);
 }
-.notebook .memo-list .note-paper .memo-box .read-memo {
+.notebook .memo-list .note-paper .read-memo {
   display: -webkit-box;
   height: 100px;
-  margin-top: 8px;
-  font-family: 'Ownglyph_ryuttung-Rg';
+  margin-top: 4px;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 17px;
   text-overflow: ellipsis;
   overflow: hidden;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
+  cursor: pointer;
+}
+.notebook .memo-list .note-paper .read-memo:hover {
+  text-decoration: underline;
 }
 .notebook .memo-list .note-paper .btn-box {
-  display: flex;
   position: absolute;
-  right: 4px;
+  left: 0;
   bottom: 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  height: 20px;
+  padding: 0 4px;
 }
 .notebook .memo-list .note-paper .btn-box button {
   width: 20px;
@@ -149,7 +180,12 @@ ul, ol {
   opacity: 1;
   transition: opacity 0.3s;
 }
+.notebook .memo-list .note-paper .btn-box button.close-btn {
+  visibility: hidden;
+  background-image: url(images/close.svg);
+}
 .notebook .memo-list .note-paper .btn-box button.save-btn {
+  visibility: hidden;
   background-image: url(images/save.svg);
 }
 .notebook .memo-list .note-paper .btn-box button.edit-btn {
@@ -157,4 +193,14 @@ ul, ol {
 }
 .notebook .memo-list .note-paper .btn-box button.del-btn {
   background-image: url(images/del.svg);
+}
+.notebook .black-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
