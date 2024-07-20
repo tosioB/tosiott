@@ -10,7 +10,7 @@
   width: 0;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 ::-webkit-scrollbar-track {
   background-color: rgba(0,0,0,0.2);
@@ -41,24 +41,99 @@ ul, ol {
   height: 759px;
   background: url(images/bg.png) no-repeat 50% 0% / 100%;
   box-shadow: 16px 16px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+.notebook .new-memo-btn {
+  position: absolute;
+  right: 10px;
+  top: -56px;
+  transform: rotate(138deg);
+  width: 38px;
+  height: 180px;
+  background: transparent url(images/pencil.png) no-repeat 50% 50%;
+  background-size: 30px;
+  border: none;
+  cursor: pointer;
+  z-index: 4;
+  /* animation: opacity-ani 0.6s; */
+  transition: all 1.5s;
+}
+/* @keyframes opacity-ani {
+  0% {
+    opacity: 1;
+  }
+  50% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+} */
+.notebook .new-memo-btn.active {
+  position: absolute;
+  right: 100px;
+  top: 246px;
+  transform: rotate(560deg);
+  height: 282px;
+  background-size: 50px;
+  transition: all 1s;
 }
 /* memo */
-.notebook .memo {
+.notebook .take-note {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: none;
+  width: 340px;
+  height: 340px;
+  padding: 12px;
+  background-color: transparent;
+  z-index: 3;
 }
-.notebook .memo textarea {
+.notebook .take-note.active {
+  display: block;
+}
+.notebook .take-note input {
   width: 100%;
-  height: 40px;
+  height: 32px;
+  padding: 0 12px;
+  background-color: transparent;
   border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.notebook .take-note input:focus {
+  outline: none;
+}
+.notebook .take-note input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.notebook .take-note textarea {
+  width: 100%;
+  height: calc(100% - 52px);
+  padding: 12px;
+  margin-top: 8px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   resize: none;
 }
-.notebook .memo .add-btn {
+.notebook .take-note textarea:focus {
+  outline: none;
+}
+.notebook .take-note textarea::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.notebook .take-note .add-btn {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 12px;
+  top: 12px;
+  width: 32px;
+  height: 32px;
+  font-size: 0;
+  background: url(images/edit.svg) no-repeat 50% 50% / 20px;
+  border: none;
+  cursor: pointer;
 }
 .notebook .main-title {
   margin-top: 74px;
@@ -81,12 +156,11 @@ ul, ol {
   margin-top: 12px;
   overflow: auto;
 }
-.notebook .memo-list .note-paper {
+.notebook .memo-list .list {
   width: 170px;
   height: 170px;
-  position: relative;
 }
-.notebook .memo-list .note-paper .paper {
+.notebook .memo-list .list .memo {
   position: relative;
   left: 0;
   top: 0;
@@ -96,31 +170,31 @@ ul, ol {
   padding: 12px;
   box-shadow: 8px 8px 8px rgba(0,0,0,0.25);
 }
-.notebook .memo-list .note-paper .paper.active {
+.notebook .memo-list .list .memo.active {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) scale(2) !important;
   z-index: 2;
 }
-.notebook .memo-list .note-paper input[type="checkbox"] {
+.notebook .memo-list .list .memo input[type="checkbox"] {
   display: none;
 }
-.notebook .memo-list .note-paper label {
+.notebook .memo-list .list .memo label {
   display: flex;
   align-items: center;
   gap: 4px;
   
   cursor: pointer;
 }
-.notebook .memo-list .note-paper label:hover {
+.notebook .memo-list .list .memo label:hover {
   text-decoration: underline;
 }
-.notebook .memo-list .note-paper label .date {
+.notebook .memo-list .list .memo label .date {
   font-size: 14px;
   font-weight: 700;
 }
-.notebook .memo-list .note-paper label .title {
+.notebook .memo-list .list .memo label .title {
   display: block;
   font-size: 18px;
   font-weight: 700;
@@ -129,7 +203,7 @@ ul, ol {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.notebook .memo-list .note-paper label .check-icon {
+.notebook .memo-list .list .memo label .check-icon {
   display: block;
   width: 14px;
   min-width: 14px;
@@ -137,10 +211,10 @@ ul, ol {
   background: no-repeat 50% 50% / 14px;
   background-image: url(images/uncheck.svg);
 }
-.notebook .memo-list .note-paper input[type="checkbox"]:checked+label .check-icon {
+.notebook .memo-list .list .memo input[type="checkbox"]:checked+label .check-icon {
   background-image: url(images/check.svg);
 }
-.notebook .memo-list .note-paper .read-memo {
+.notebook .memo-list .list .memo .read-memo {
   display: -webkit-box;
   height: 100px;
   margin-top: 4px;
@@ -152,10 +226,14 @@ ul, ol {
   -webkit-box-orient: vertical;
   cursor: pointer;
 }
-.notebook .memo-list .note-paper .read-memo:hover {
+.notebook .memo-list .list .memo .read-memo:hover {
   text-decoration: underline;
 }
-.notebook .memo-list .note-paper .btn-box {
+.notebook .memo-list .list .memo.active .read-memo {
+  overflow: auto;
+  -webkit-line-clamp: initial;
+}
+.notebook .memo-list .list .memo .btn-box {
   position: absolute;
   left: 0;
   bottom: 4px;
@@ -166,7 +244,7 @@ ul, ol {
   height: 20px;
   padding: 0 4px;
 }
-.notebook .memo-list .note-paper .btn-box button {
+.notebook .memo-list .list .memo .btn-box button {
   width: 20px;
   height: 20px;
   font-size: 0;
@@ -176,22 +254,25 @@ ul, ol {
   cursor: pointer;
   transition: opacity 0.3s;
 }
-.notebook .memo-list .note-paper .btn-box button:hover {
+.notebook .memo-list .list .memo .btn-box button:hover {
   opacity: 1;
   transition: opacity 0.3s;
 }
-.notebook .memo-list .note-paper .btn-box button.close-btn {
+.notebook .memo-list .list .memo .btn-box button.close-btn {
   visibility: hidden;
   background-image: url(images/close.svg);
 }
-.notebook .memo-list .note-paper .btn-box button.save-btn {
+.notebook .memo-list .list .memo .btn-box button.close-btn.active {
+  visibility: visible;
+}
+.notebook .memo-list .list .memo .btn-box button.save-btn {
   visibility: hidden;
   background-image: url(images/save.svg);
 }
-.notebook .memo-list .note-paper .btn-box button.edit-btn {
+.notebook .memo-list .list .memo .btn-box button.edit-btn {
   background-image: url(images/edit.svg);
 }
-.notebook .memo-list .note-paper .btn-box button.del-btn {
+.notebook .memo-list .list .memo .btn-box button.del-btn {
   background-image: url(images/del.svg);
 }
 .notebook .black-bg {
@@ -203,4 +284,7 @@ ul, ol {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
+}
+.notebook .black-bg.active {
+  display: block;
 }

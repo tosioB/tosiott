@@ -24,33 +24,48 @@ function getRandomRotation(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const notePaper = document.querySelectorAll('.note-paper');
-notePaper.forEach((memo) => {
-  const paper = memo.querySelector('.paper');
+const takeNote = document.querySelector('.take-note');
+const newMemoBtn = document.querySelector('.new-memo-btn');
+const blackBg = document.querySelector('.black-bg');
 
-  paper.style.backgroundColor = getRandomPastelColor(); // getRandomPastelColor 함수는 아래에 정의됩니다
+takeNote.style.backgroundColor = getRandomPastelColor();
 
+newMemoBtn.addEventListener('click', () => { // 메모 작성 버튼 클릭
+  newMemoBtn.classList.add('active');
+  takeNote.classList.add('active');
+  blackBg.classList.add('active');
+});
+
+const memoList = document.querySelectorAll('.memo-list li');
+memoList.forEach((item) => {
+  const memo = item.querySelector('.memo');
+
+  memo.style.backgroundColor = getRandomPastelColor(); // 컬러 함수 적용
+
+  // 각도 함수 적용
   var randomRotation = getRandomRotation(-5, 5);
-  paper.style.transform = 'rotate(' + randomRotation + 'deg)';
+  memo.style.transform = 'rotate(' + randomRotation + 'deg)';
 
-  const readMemo = memo.querySelector('.read-memo');
-  const closeBtn = memo.querySelector('.close-btn');
-  const blackBg = document.querySelector('.black-bg');
-  readMemo.addEventListener('click', () => {
-    paper.classList.add('active');
-    blackBg.style.display = 'block';
-    closeBtn.style.visibility = 'visible';
+  const readMemo = item.querySelector('.read-memo');
+  const closeBtn = item.querySelector('.close-btn');
+  
+  readMemo.addEventListener('click', () => { // 메모 내용 클릭
+    blackBg.classList.add('active');
+    memo.classList.add('active');
+    closeBtn.classList.add('active');
   });
 
-  closeBtn.addEventListener('click', () => {
-    paper.classList.remove('active');
-    blackBg.style.display = 'none';
-    closeBtn.style.visibility = 'hidden';
+  closeBtn.addEventListener('click', () => { // 메모 닫기 버튼 클릭
+    blackBg.classList.remove('active');
+    memo.classList.remove('active');
+    closeBtn.classList.remove('active');
   });
 
-  blackBg.addEventListener('click', () => {
-    paper.classList.remove('active');
-    blackBg.style.display = 'none';
-    closeBtn.style.visibility = 'hidden';
+  blackBg.addEventListener('click', () => { // dim 클릭
+    newMemoBtn.classList.remove('active');
+    takeNote.classList.remove('active');
+    blackBg.classList.remove('active');
+    memo.classList.remove('active');
+    closeBtn.classList.remove('active');
   });
 });
