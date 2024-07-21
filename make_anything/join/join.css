@@ -172,6 +172,9 @@ select option {
   position: relative;
   cursor: pointer;
 }
+#join form .chk-box input[type="checkbox"] + label .essential {
+  font-weight: 700;
+}
 #join form .chk-box input[type="checkbox"] + label::before {
   content: '';
   position: absolute;

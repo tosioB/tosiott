@@ -261,15 +261,32 @@ allCheck.addEventListener('change', () => {
   let isAllCheck = allCheck.checked;
     termsCheck.forEach((checkbox) => {
       checkbox.checked = isAllCheck;
+      if (isAllCheck) {
+        isTrueTermsService = true;
+        isTrueTermsPrivacy = true;
+      } else {
+        isTrueTermsService = false;
+        isTrueTermsPrivacy = false;
+      }
     });
 });
 
 termsService.addEventListener('change', (e) => { // [필수]이용약관
   isTrueTermsService = e.target.checked
+  if (isTrueTermsService) {
+    isTrueTermsService = true;
+  } else {
+    isTrueTermsService = false;
+  }
 });
 
 termsPrivacy.addEventListener('change', (e) => { // [필수]개인정보 수집 및 이용
-  isTrueTermsPrivacy = e.target.checked
+  isTrueTermsPrivacy = e.target.checked;
+  if (isTrueTermsPrivacy) {
+    isTrueTermsPrivacy = true;
+  } else {
+    isTrueTermsPrivacy = false;
+  }
 });
 
 
@@ -287,7 +304,7 @@ doubleCheckBtnNick.addEventListener('click', () => {handleNickDoubleCheck()}); /
 
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
+  
   if (isTrueId && isTruePw && isTrueRePw && isTrueNick && isTrueEmail && isTruePhone && isTruePhoneCerf && isTrueTermsService && isTrueTermsPrivacy) {
     members.push({ // 새로운 멤버 객체
       id: userInfo.id,
@@ -301,16 +318,17 @@ form.addEventListener('submit', (e) => {
     let membersJSON = JSON.stringify(members); // 새로운 멤버를 JSON으로 변환
     localStorage.setItem('members', membersJSON); // JSON으로 변환한 새로운 멤버를 로컬스토리지에 저장
   } else {
+    e.preventDefault();
     alert('회원가입불가');
-    // console.log(`isTrueId(아이디) : ${isTrueId}`);
-    // console.log(`isTruePw(비밀번호) : ${isTruePw}`);
-    // console.log(`isTrueRePw(비밀번호 확인) : ${isTrueRePw}`);
-    // console.log(`isTrueNick(닉네임) : ${isTrueNick}`);
-    // console.log(`isTrueEmail(이메일) : ${isTrueEmail}`);
-    // console.log(`isTruePhone(휴대폰번호) : ${isTruePhone}`);
-    // console.log(`isTruePhoneCerf(인증번호) : ${isTruePhoneCerf}`);
-    // console.log(`isTrueTermsService)(이용약관동의) : ${isTrueTermsService}`);
-    // console.log(`isTrueTermsPrivacy)(개인정보 수집 동의) : ${isTrueTermsPrivacy}`);
+    console.log(`isTrueId(아이디) : ${isTrueId}`);
+    console.log(`isTruePw(비밀번호) : ${isTruePw}`);
+    console.log(`isTrueRePw(비밀번호 확인) : ${isTrueRePw}`);
+    console.log(`isTrueNick(닉네임) : ${isTrueNick}`);
+    console.log(`isTrueEmail(이메일) : ${isTrueEmail}`);
+    console.log(`isTruePhone(휴대폰번호) : ${isTruePhone}`);
+    console.log(`isTruePhoneCerf(인증번호) : ${isTruePhoneCerf}`);
+    console.log(`isTrueTermsService)(이용약관동의) : ${isTrueTermsService}`);
+    console.log(`isTrueTermsPrivacy)(개인정보 수집 동의) : ${isTrueTermsPrivacy}`);
   }
   init();
 });
