@@ -1,7 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
-* {
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -17,9 +14,7 @@
 }
 html, body {
   height: 100%;
-  /* font-family: "Nanum Pen Script", cursive; */
-  /* font-family: "Nanum Pen Script", cursive; */
-  font-family: "Hi Melody", sans-serif;
+  font-family: "Gaegu", sans-serif;
   letter-spacing: -0.6px;
 }
 ul, ol {
@@ -55,20 +50,8 @@ ul, ol {
   border: none;
   cursor: pointer;
   z-index: 4;
-  /* animation: opacity-ani 0.6s; */
-  transition: all 1.5s;
+  /* transition: all 1.5s; */
 }
-/* @keyframes opacity-ani {
-  0% {
-    opacity: 1;
-  }
-  50% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
-} */
 .notebook .new-memo-btn.active {
   position: absolute;
   right: 100px;
@@ -168,6 +151,7 @@ ul, ol {
   width: 170px;
   height: 170px;
   padding: 12px;
+  background-color: #FFF;
   box-shadow: 8px 8px 8px rgba(0,0,0,0.25);
 }
 .notebook .memo-list .list .memo.active {
@@ -216,7 +200,7 @@ ul, ol {
 }
 .notebook .memo-list .list .memo .read-memo {
   display: -webkit-box;
-  height: 100px;
+  height: 102px;
   margin-top: 4px;
   font-size: 16px;
   line-height: 17px;
