@@ -4,22 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>todoList</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="todoList.css">
 </head>
 <body>
   <div class="container">
-    <div class="notebook">
+    <div class="notepad">
       <button type="button" class="new-memo-btn"></button>
-      <div class="take-note">
-        <input type="text" class="title" placeholder="할 일 타이틀">
-        <textarea class="text" placeholder="할 일 작성"></textarea>
-        <button type="button" class="add-btn">add</button>
-      </div>
+      <form action="#" class="write-note">
+        <div>
+          <input type="text" class="title" placeholder="할 일 타이틀">
+          <textarea class="text" placeholder="할 일 작성"></textarea>
+          <button type="submit" class="add-btn">add</button>
+        </div>
+      </form>
       <p class="main-title">- 메모</p>
-      <ul class="memo-list">
-        <!-- <li class="list">
-          <div class="memo">
+      <ul class="memo-box">
+        <!-- <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -29,9 +30,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               여름 휴가를 계획하며 해변을 즐기거나 새로운 도시를 탐험해 보세요.
               휴가는 일상의 스트레스를 풀어주고 새로운 경험을 만들어 줍니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -42,8 +46,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -53,9 +57,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               디지털 시대에 필수적인 기술 혁신과 데이터 분석을 통해 비즈니스 성장을 가속화하세요.
               디지털 혁신은 기술적 경쟁력을 강화하고 시장에서의 경쟁 우위를 확보하는 핵심 요소입니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -66,8 +73,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -77,9 +84,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               매일 균형 잡힌 식단과 정기적인 운동을 통해 건강한 삶을 유지하세요.
               올바른 식습관은 몸과 마음의 건강을 지키는 데 중요한 역할을 합니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -90,8 +100,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -101,9 +111,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               지구 온난화를 막기 위해 실천적인 환경 보호 활동에 참여하세요.
               우리의 작은 노력이 지구의 미래를 결정짓습니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -114,8 +127,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -125,9 +138,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               독특한 시각과 창의적인 접근으로 문제를 해결하는 새로운 아이디어를 발굴하세요.
               창의력은 혁신의 원동력입니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -138,8 +154,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -149,9 +165,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               지속적인 학습과 개인적 성장을 통해 자신의 잠재력을 최대로 발휘하세요.
               자기 계발은 새로운 가능성을 여는 열쇠입니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -162,8 +181,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -173,9 +192,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               사회적 책임을 다하며 지역 사회와 함께 성장하세요.
               사회적 기여는 진정한 리더십의 일환입니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -186,8 +208,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -197,9 +219,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               변화된 환경에서 새로운 기회를 찾고 변화에 적응하세요.
               포스트 코로나 시대는 새로운 시작을 의미합니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -210,8 +235,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -221,9 +246,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               다양한 문화와 경제적 도전에 대응하여 글로벌 시장에서 경쟁력을 강화하세요.
               글로벌 시장에서의 성공을 위한 전략을 세우세요.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -234,8 +262,8 @@
             </span>
           </div>
         </li>
-        <li class="list">
-          <div class="memo">
+        <li class="memo-list">
+          <div class="memo-paper">
             <span class="chk-box">
               <input type="checkbox" name="check-01" id="check-01">
               <label for="check-01">
@@ -245,9 +273,12 @@
               </label>
             </span>
             <span class="read-memo">
+              읽는 메모
+            </span>
+            <textarea class="edit-memo">
               지속 가능성과 혁신을 통해 미래를 준비하세요.
               미래 전망을 예측하고 준비하는 것이 중요합니다.
-            </span>
+            </textarea>
             <span class="btn-box">
               <button class="close-btn"></button>
               <div class="center-sort">
@@ -263,6 +294,5 @@
     </div>
   </div>
   <script src="todoList.js"></script>
-  <!-- <script src="totoListStyle.js"></script> -->
 </body>
 </html>
