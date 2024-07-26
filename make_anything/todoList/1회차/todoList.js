@@ -1,14 +1,30 @@
 let memos = [];
 
+const pastelColors = [
+  '#E0BBE4', // 연한 보라
+  '#BFE1B0', // 연한 녹색
+  '#FFD8B1', // 연한 복숭아
+  '#B2E0D8', // 연한 민트
+  '#FFC0CB', // 연한 핑크
+  '#D7A9E3', // 연한 라벤더
+  '#E9F7EF', // 연한 라임
+  '#C2F0C2', // 연한 연녹색
+  '#B4E2D5', // 연한 하늘색
+  '#F6BDC0'  // 연한 코랄
+];
+
 function createMemo(){ // 메모 생성하기
   const memoBox = document.querySelector('.memo-box');
   memoBox.innerHTML = memos.map((memo) => {
+    const randomIndex = Math.floor(Math.random() * pastelColors.length);
+    const randomColor = pastelColors[randomIndex];
+    const randomRotation = (Math.random() * 10) - 5; // -5~5도의 랜덤 각도
     return (
       `
         <li class="memo-list">
-          <div class="memo-paper">
+          <div class="memo-paper" style="background-color: ${randomColor}; transform: rotate(${randomRotation}deg);">
             <span class="chk-box">
-              <input type="checkbox" class="memo-check" name="memo-check" id="${memo.id}">
+              <input type="checkbox" class="memo-check" name="memo-check" id="${memo.id}" ${memo.checked}>
               <label for="${memo.id}">
                 <span class="date">${memo.creatDate}</span>
                 <span class="title">
@@ -35,6 +51,7 @@ function createMemo(){ // 메모 생성하기
   }).join('');
   delMemo();
   editMemo();
+  checkMemo();
 }
 
 function addMemo(){ // 메모 추가하기
@@ -49,10 +66,10 @@ function addMemo(){ // 메모 추가하기
 
   let memoInfo = {
     id: numberDate,
-    checked: false,
+    checked: '',
     title: title.value,
     text: text.value,
-    creatDate: `${year}.${month}.${date}`
+    creatDate: `${year}.${month}.${date}`,
   }
 
   if (title.value === '') {
@@ -79,7 +96,7 @@ function delMemo(){ // 메모 삭제하기
       memos = memos.filter((memo) => {
         return memo.id !== memoId // 체크박스의 id값과 memos의 id값을 비교 (같은 값 삭제)
       });
-
+      
       createMemo();
       saveMemo();
       editMemo();
@@ -103,7 +120,7 @@ function editMemo(){ // 메모 수정하기
       item.classList.remove('edit-form');
       const memoId = Number(saveBtn.closest('.memo-paper').querySelector('.memo-check').id); // 삭제 버튼에서 체크박스 id값 받아내기
       memos.forEach((memo) => {
-        if (memo.id === memoId) {
+        if (memo.id === memoId) { // 클릭한 저장 버튼의 id와 memos에 있는 id값을 비교(같은것 찾기)
           memo.title = editTitle.value;
           memo.text = editMemo.value;
         }
@@ -115,32 +132,37 @@ function editMemo(){ // 메모 수정하기
   });
 }
 
-function checkStatus(){
+function checkMemo(){ // 체크 상태
   const memoList = document.querySelectorAll('.memo-list');
   memoList.forEach((item) => {
     const memoCheck = item.querySelector('.memo-check');
-    // const memoId = Number(memoCheck.closest('.memo-paper').querySelector('.memo-check').id); // 삭제 버튼에서 체크박스 id값 받아내기
-    // if (memoCheck.checked) {
-    //   // memos.forEach((memo) => {
-    //   //   if (memo.id === memoId) {
-    //   //     console.log(memo)
-    //   //   }
-    //   // });
-    //   // console.log('aa')
-    // } else {
-    //   console.log('bb');
-    // }
-    console.log(memoCheck.checked)
-    
-    
-    createMemo();
-    saveMemo();
-  })
+
+    memoCheck.addEventListener('change', () => {
+      const memoId = Number(memoCheck.closest('.memo-paper').querySelector('.memo-check').id); // 삭제 버튼에서 체크박스 id값 받아내기
+      memos.forEach((memo) => {
+        if (memo.id === memoId) { // 체크한 체크박스의 id와 memos에 있는 id값을 비교(같은것 찾기)
+          if (memoCheck.checked) {
+            memo.checked = 'checked';
+          } else {
+            memo.checked = '';
+          }
+          createMemo();
+          saveMemo();
+        }
+      });
+    });
+  });
 }
 
 function saveMemo(){ // 로컬 스토리지에 저장
   const stringifyMemo = JSON.stringify(memos);  // memos 배열에 있는 값을 문자열로 변환
   localStorage.setItem('myMemo', stringifyMemo); // 문자열로 변환된 memos를 myMemo이름으로 로컬 스토리지에 저장
+}
+
+function newMemoHandler(){ // 메모 작성 이벤트
+  newMemoBtn.classList.toggle('active');
+  writeNote.classList.toggle('active');
+  blackBg.classList.toggle('active');
 }
 
 function loadMemo(){ // 화면에 표시하기
@@ -151,12 +173,20 @@ function loadMemo(){ // 화면에 표시하기
     createMemo();
     delMemo();
     editMemo();
-    checkStatus()
+    checkMemo();
   }
 }
 loadMemo();
 
+const newMemoBtn = document.querySelector('.new-memo-btn');
+const writeNote = document.querySelector('.write-note');
+const blackBg = document.querySelector('.black-bg');
+
+
+newMemoBtn.addEventListener('click', newMemoHandler);
+
 const addBtn = document.querySelector('.add-btn');
 addBtn.addEventListener('click', () => { // 새로운 메모를 추가하는 클릭 이벤트
   addMemo();
-})
+  newMemoHandler();
+});
