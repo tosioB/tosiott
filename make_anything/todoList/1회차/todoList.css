@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 ::-webkit-scrollbar-track {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 html, body {
   height: 100%;
@@ -182,6 +182,7 @@ ul, ol {
 .notepad .memo-box .memo-list .memo-paper label .date {
   font-size: 14px;
   font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
 }
 .notepad .memo-box .memo-list .memo-paper label .title {
   display: block;
@@ -191,6 +192,21 @@ ul, ol {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
+}
+.notepad .memo-box .memo-list .memo-paper label .title .edit-title {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+.notepad .memo-box .memo-list .memo-paper label .title .edit-title:focus {
+  outline: none;
 }
 .notepad .memo-box .memo-list .memo-paper label .check-icon {
   display: block;
@@ -224,6 +240,18 @@ ul, ol {
 }
 .notepad .memo-box .memo-list .memo-paper .edit-memo {
   display: none;
+  width: 100%;
+  height: 108px;
+  padding: 8px;
+  margin-top: 4px;
+  font-size: 12px;
+  background-color: #FFF;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  resize: none;
+}
+.notepad .memo-box .memo-list .memo-paper .edit-memo:focus {
+  outline: none;
 }
 .notepad .memo-box .memo-list .memo-paper .btn-box {
   position: absolute;
@@ -258,7 +286,7 @@ ul, ol {
   visibility: visible;
 }
 .notepad .memo-box .memo-list .memo-paper .btn-box button.save-btn {
-  visibility: hidden;
+  display: none;
   background-image: url(images/save.svg);
 }
 .notepad .memo-box .memo-list .memo-paper .btn-box button.edit-btn {
@@ -266,6 +294,24 @@ ul, ol {
 }
 .notepad .memo-box .memo-list .memo-paper .btn-box button.del-btn {
   background-image: url(images/del.svg);
+}
+.notepad .memo-box .memo-list.edit-form .memo-paper label .title {
+  width: 68px;
+}
+.notepad .memo-box .memo-list.edit-form .memo-paper label .title .edit-title {
+  display: block;
+}
+.notepad .memo-box .memo-list.edit-form .memo-paper .read-memo {
+  display: none;
+}
+.notepad .memo-box .memo-list.edit-form .memo-paper .edit-memo {
+  display: block;
+}
+.notepad .memo-box .memo-list.edit-form .memo-paper .btn-box button.save-btn {
+  display: block;
+}
+.notepad .memo-box .memo-list.edit-form .memo-paper .btn-box button.edit-btn {
+  display: none;
 }
 .notepad .black-bg {
   position: absolute;
